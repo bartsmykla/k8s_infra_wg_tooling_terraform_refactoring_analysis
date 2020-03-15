@@ -20,7 +20,7 @@
       - [Reference for Prod Storage](#reference-for-prod-storage)
     - [Prod Storage GCLB](#prod-storage-gclb)
       - [Prod Storage GCLB / Components](#prod-storage-gclb--components)
-      - [Prod Storage GCLB / Reference](#prod-storage-gclb--reference)
+      - [Reference for Prod Storage GCLB](#reference-for-prod-storage-gclb)
     - [Staging Storage](#staging-storage)
       - [What components are needed for each [PROJECT]](#what-components-are-needed-for-each-project)
       - [What components are needed for each of RELEASE_STAGING_PROJECTS [RS_PROJECT]](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
@@ -31,7 +31,6 @@
       - [CIP Auditor Deploy](#cip-auditor-deploy)
         - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
       - [Reference for CIP Auditor](#reference-for-cip-auditor)
-      - [Notes for CIP Auditor](#notes-for-cip-auditor)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -126,6 +125,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
   > [**@bartsmykla**]: In [current code](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-main-project.sh#L146-L177) we are appending three roles below to already existing ones. We need to make sure we know about every other role and explicitly pur them in terraform or if they are the default roles if terraform will apply them by default
   >
   > [**@bartsmykla**]: Currently [at the end of the script which is provisioning resources for main project](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-main-project.sh#L179-L192) there is a comment and mechanism to acknowledging the knowledge about having to log in to the cloud console by human to enable billing export
+  
   - `kubernetes_public_billing`:
     - `access`:
       - `groupByEmail:k8s-infra-gcp-accounting@kubernetes.io"`:
@@ -184,6 +184,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
   - **Components per [[PROJECT]](#prod-storage-projects) per [[REGION]](#prod-storage-regions)**:
 
     > [**Hint**]: Currently regions we are creating our resources at are: "`us`", "`eu`", "`asia`". So if you see for example GCR Resource with the name `[REGION]_[PROJECT]` for the project `k8s-artifacts-prod` (which we use for this example purposes) there will be three cloud registries (GCR) created: `us_k8s-artifacts-prod`, `eu_k8s-artifacts-prod` and `asia_k8s-artifacts-prod`
+
     - GCR:
       - `[REGION]_[PROJECT]`
     - GCS Bucket:
@@ -433,7 +434,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `443`
       - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#prod-storage-gclb--reference "Example how to get [GLOBAL_ADDRESS] using terraform")
 
-##### Prod Storage GCLB / Reference
+##### Reference for Prod Storage GCLB
 
 - <sup>1</sup> The example which shows how to get the `[GLOBAL_ADDRESS]` using terraform with all intermediate components
 
@@ -690,8 +691,6 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
   ```
 
 - <sup>3</sup> Maybe we can take the `[CIP_AUDITOR_DIGEST]` from the data source: `[google_container_registry_image](https://www.terraform.io/docs/providers/google/d/google_container_registry_image.html)`
-
-##### Notes for CIP Auditor
 
 ---
 
