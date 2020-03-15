@@ -25,6 +25,8 @@
     - [Env CIP Auditor](#env-cip-auditor)
       - [Env CIP Auditor / Components](#env-cip-auditor--components)
       - [Reference for Env CIP Auditor](#reference-for-env-cip-auditor)
+    - [CIP Auditor Deploy](#cip-auditor-deploy)
+      - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -34,6 +36,10 @@
 ---
 
 ## Preface
+
+I strongly believe in rule that before you'll start solving the problem with the code you should understand well what is the problem and solve it conceptualy first.
+
+[IMPORTANT!] As you can assume, I've spent some time working on this document. I come to some conclusions and have some thoughts and ideas but they are just MY conclusions and just MY foughts and ideas. PLEASE don't feel obliged to agree with me just because I spent my time working on it. If you think I'm wrong or/and you think we could improve it PLEASE write about it. Even if it would completely scrap my ideas/suggestions/plans. Let's treat it as a working document and have fruitful discussion.
 
 ### tl;dr
 
@@ -531,6 +537,14 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     }
   }
   ```
+
+---
+
+#### CIP Auditor Deploy
+
+##### CIP Auditor Deploy / Components
+
+---
 
 ## Proposed structure of new tooling
 
