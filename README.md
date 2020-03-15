@@ -35,6 +35,8 @@
       - [Release Projects `[PROJECTS]`](#release-projects-projects)
       - [Release Projects / Components](#release-projects--components)
       - [Reference for Release Projects](#reference-for-release-projects)
+    - [Releng](#releng)
+      - [Releng / Components](#releng--components)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -775,6 +777,25 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 ##### Reference for Release Projects
 
 - <sup>1</sup> [There is a comment from @justaugustus](https://github.com/kubernetes/k8s.io/blob/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/infra/gcp/lib.sh#L316-L320) it's temporary and we should refactor this once we develop custom roles
+
+---
+
+#### Releng
+
+##### Releng / Components
+
+- **Components for project: `k8s-releng-prod`**:
+  - Project:
+    - `k8s-releng-prod`
+  - IAM Policy Binding:
+    - `roles/viewer`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+    - `roles/cloudkms.admin`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+    - `roles/cloudkms.cryptoKeyEncrypterDecrypter`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+  - API:
+    - `cloudkms`
 
 ---
 
