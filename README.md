@@ -506,14 +506,14 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ##### CIP Auditor Deploy
 
-> [**todo(@listx)**]: Do we really need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other then `k8s-artifacts-prod` projects too?
+> [**todo(@listx)**]: Do we need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other then `k8s-artifacts-prod` projects too?
 
 ###### CIP Auditor Deploy / Components
 
-- Components for `[PROJECT]` (currently provided via CLI argument)
+- Components for `[PROJECT]` ([currently provided via CLI argument](https://github.com/kubernetes/k8s.io/blob/3ec33f49bf4181f355e30d3871174a79cda3aad2/infra/gcp/cip-auditor/deploy.sh#L75))
   - Cloud Run Service[<sup>1</sup>](#reference-for-cip-auditor "Example of terraform component for cloud run service"):
 
-    > `[CIP_AUDITOR_DIGEST]` is currently provided via CLI argument
+    > [`[CIP_AUDITOR_DIGEST]` is currently provided via CLI argument](https://github.com/kubernetes/k8s.io/blob/3ec33f49bf4181f355e30d3871174a79cda3aad2/infra/gcp/cip-auditor/deploy.sh#L76)
 
     - `cip-auditor`:
       - image: `us.gcr.io/k8s-artifacts-prod/artifact-promoter/cip-auditor@sha256:[CIP_AUDITOR_DIGEST]`
