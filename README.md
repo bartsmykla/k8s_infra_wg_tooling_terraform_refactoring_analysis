@@ -25,9 +25,10 @@
     - [CIP Auditor](#cip-auditor)
       - [Env CIP Auditor](#env-cip-auditor)
         - [Env CIP Auditor / Components](#env-cip-auditor--components)
-        - [Reference for Env CIP Auditor](#reference-for-env-cip-auditor)
       - [CIP Auditor Deploy](#cip-auditor-deploy)
         - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
+      - [Reference for CIP Auditor](#reference-for-cip-auditor)
+      - [Notes for CIP Auditor](#notes-for-cip-auditor)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -484,7 +485,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
     - `stackdriver.googleapis.com`
     - `clouderrorreporting.googleapis.com`
     - `run.googleapis.com`
-  - Cloud Run Service:
+  - Cloud Run Service[<sup>1</sup>](#reference-for-cip-auditor "Example of terraform component for cloud run service"):
     - `cip-auditor`:
       - image: `gcr.io/cloudrun/hello`
       - platform: `managed`
@@ -501,11 +502,34 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
       - topic: `gcr`
       - expiration_policy: `never`
       - push_endpoint: `[CLOUD_RUN_SERVICE.cip-auditor.ENDPOINT]`
-      - push_auth_service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`[<sup>1</sup>](#reference-for-env-cip-auditor)
+      - push_auth_service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`[<sup>2</sup>](#reference-for-cip-auditor)
 
-###### Reference for Env CIP Auditor
+##### CIP Auditor Deploy
 
-- <sup>1</sup> In terraform resource it's achieved by argument `google_pubsub_subscription.push_config.oidc_token.service_account_email`
+> [**todo(@listx)**]: Do we really need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other then `k8s-artifacts-prod` projects too?
+
+###### CIP Auditor Deploy / Components
+
+- Components for `[PROJECT]` (currently provided via CLI argument)
+  - Cloud Run Service[<sup>1</sup>](#reference-for-cip-auditor "Example of terraform component for cloud run service"):
+
+    > `[CIP_AUDITOR_DIGEST]` is currently provided via CLI argument
+
+    - `cip-auditor`:
+      - image: `us.gcr.io/k8s-artifacts-prod/artifact-promoter/cip-auditor@sha256:[CIP_AUDITOR_DIGEST]`
+      - platform: `managed`
+      - no_allow_unauthenticated: `true`
+      - region: `us-central1`
+      - service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@[PROJECT].iam.gserviceaccount.com`
+      - env_vars:
+        - `CIP_AUDIT_MANIFEST_REPO_URL` : `https://github.com/kubernetes/k8s.io`
+        - `CIP_AUDIT_MANIFEST_REPO_BRANCH` : `master`
+        - `CIP_AUDIT_MANIFEST_REPO_MANIFEST_DIR` : `k8s.gcr.io`
+        - `CIP_AUDIT_GCP_PROJECT_ID` : `k8s-artifacts-prod`
+
+##### Reference for CIP Auditor
+
+- <sup>1</sup> Example of fow to create Google Cloud Run Service component in terraform[<sup>3</sup>](#reference-for-cip-auditor)
 
   > [**todo(@bartsmykla)**]: Verify it works because I wrote it manually without real testing
 
@@ -517,13 +541,35 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
     template {
       spec {
         containers {
-          image = "gcr.io/cloudrun/hello"
+          image = "us.gcr.io/k8s-artifacts-prod/artifact-promoter/cip-auditor@sha256:[CIP_AUDITOR_DIGEST]"
+          env {
+            name = "CIP_AUDIT_MANIFEST_REPO_URL"
+            value = "https://github.com/kubernetes/k8s.io"
+          }
+          env {
+            name = "CIP_AUDIT_MANIFEST_REPO_BRANCH"
+            value = "master"
+          }
+          env {
+            name = "CIP_AUDIT_MANIFEST_REPO_MANIFEST_DIR"
+            value = "k8s.gcr.io"
+          }
+          env {
+            name = "CIP_AUDIT_GCP_PROJECT_ID"
+            value = "k8s-artifacts-prod"
+          }
         }
         service_account_name = "serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com"
       }
     }
   }
+  ```
 
+- <sup>2</sup> In terraform resource it's achieved by argument `google_pubsub_subscription.push_config.oidc_token.service_account_email`
+
+  > [**todo(@bartsmykla)**]: Verify it works because I wrote it manually without real testing
+
+  ```terraform
   resource "google_pubsub_topic" "gcr" {
     name = "gcr"
   }
@@ -546,11 +592,9 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
   }
   ```
 
----
+- <sup>3</sup> Maybe we can take the `[CIP_AUDITOR_DIGEST]` from the data source: `[google_container_registry_image](https://www.terraform.io/docs/providers/google/d/google_container_registry_image.html)`
 
-##### CIP Auditor Deploy
-
-###### CIP Auditor Deploy / Components
+##### Notes for CIP Auditor
 
 ---
 
@@ -568,3 +612,4 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 - @listx:
   - > [[**todo(@listx)**]: I don't undestand why we first create dummy Cloud Run Service in `ensure-env-cip-auditor.sh` and then overwriting it in `cip-auditor/deploy.sh`. What stands behind the decision to do it that way? Can we eliminate the step for the dummy service?](#cip-auditor)
+  - > [[**todo(@listx)**]: Do we really need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other then `k8s-artifacts-prod` projects too?](#cip-auditor-deploy)
