@@ -22,16 +22,18 @@
       - [What components are needed for each [PROJECT]](#what-components-are-needed-for-each-project)
       - [What components are needed for each of RELEASE_STAGING_PROJECTS [RS_PROJECT]](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
       - [What components are needed for project: k8s-staging-release-test](#what-components-are-needed-for-project-k8s-staging-release-test)
-    - [Env CIP Auditor](#env-cip-auditor)
-      - [Env CIP Auditor / Components](#env-cip-auditor--components)
-      - [Reference for Env CIP Auditor](#reference-for-env-cip-auditor)
-    - [CIP Auditor Deploy](#cip-auditor-deploy)
-      - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
+    - [CIP Auditor](#cip-auditor)
+      - [Env CIP Auditor](#env-cip-auditor)
+        - [Env CIP Auditor / Components](#env-cip-auditor--components)
+        - [Reference for Env CIP Auditor](#reference-for-env-cip-auditor)
+      - [CIP Auditor Deploy](#cip-auditor-deploy)
+        - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
   - [Why terraform?](#why-terraform)
   - [How can I help?](#how-can-i-help)
+- [todos](#todos)
 
 ---
 
@@ -460,9 +462,15 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 ---
 
-#### Env CIP Auditor
+#### CIP Auditor
 
-##### Env CIP Auditor / Components
+Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensure-env-cip-auditor.sh`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-env-cip-auditor.sh) and [`cip-auditor/deploy.sh`](ttps://github.com/kubernetes/k8s.io/blob/master/infra/gcp/cip-auditor/deploy.sh)) I decided to combine them into one section because I think we shouldn't split them.
+
+> [**todo(@listx)**]: I don't undestand why we first create dummy Cloud Run Service in [`ensure-env-cip-auditor.sh`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-env-cip-auditor.sh#L160-L164) and then overwriting it in [`cip-auditor/deploy.sh`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/cip-auditor/deploy.sh#L47-L54). What stands behind the decision to do it that way? Can we eliminate the step for the dummy service?
+
+##### Env CIP Auditor
+
+###### Env CIP Auditor / Components
 
 - Components for project `k8s-artifacts-prod`:
   
@@ -495,7 +503,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - push_endpoint: `[CLOUD_RUN_SERVICE.cip-auditor.ENDPOINT]`
       - push_auth_service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`[<sup>1</sup>](#reference-for-env-cip-auditor)
 
-##### Reference for Env CIP Auditor
+###### Reference for Env CIP Auditor
 
 - <sup>1</sup> In terraform resource it's achieved by argument `google_pubsub_subscription.push_config.oidc_token.service_account_email`
 
@@ -540,9 +548,9 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 ---
 
-#### CIP Auditor Deploy
+##### CIP Auditor Deploy
 
-##### CIP Auditor Deploy / Components
+###### CIP Auditor Deploy / Components
 
 ---
 
@@ -555,3 +563,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 ### Why terraform?
 
 ### How can I help?
+
+## todos
+
+- @listx:
+  - > [[**todo(@listx)**]: I don't undestand why we first create dummy Cloud Run Service in `ensure-env-cip-auditor.sh` and then overwriting it in `cip-auditor/deploy.sh`. What stands behind the decision to do it that way? Can we eliminate the step for the dummy service?](#cip-auditor)
