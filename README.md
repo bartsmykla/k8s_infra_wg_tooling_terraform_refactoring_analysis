@@ -22,9 +22,9 @@
       - [Prod Storage GCLB / Components](#prod-storage-gclb--components)
       - [Reference for Prod Storage GCLB](#reference-for-prod-storage-gclb)
     - [Staging Storage](#staging-storage)
-      - [What components are needed for each [PROJECT]](#what-components-are-needed-for-each-project)
-      - [What components are needed for each of RELEASE_STAGING_PROJECTS [RS_PROJECT]](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
-      - [What components are needed for project: k8s-staging-release-test](#what-components-are-needed-for-project-k8s-staging-release-test)
+      - [What components are needed for each `[PROJECT]`](#what-components-are-needed-for-each-project)
+      - [What components are needed for each of RELEASE_STAGING_PROJECTS `[RS_PROJECT]`](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
+      - [What components are needed for project: `k8s-staging-release-test`](#what-components-are-needed-for-project-k8s-staging-release-test)
     - [Conformance Storage](#conformance-storage)
       - [Conformance Storage `[BUCKETS]`](#conformance-storage-buckets)
       - [Conformance Storage / Components](#conformance-storage--components)
@@ -40,12 +40,12 @@
       - [Reference for Release Projects](#reference-for-release-projects)
     - [Releng](#releng)
       - [Releng / Components](#releng--components)
-    - [GSuite<sup>1</sup>](#gsuitesup1sup)
+    - [GSuite](#gsuite)
       - [GSuite / Components](#gsuite--components)
       - [Reference for GSuite](#reference-for-gsuite)
-    - [NAMESPACES](#namespaces)
-      - [NAMESPACES `[PROJECTS]`](#namespaces-projects)
-      - [NAMESPACES / Components](#namespaces--components)
+    - [Namespaces](#namespaces)
+      - [Namespaces `[PROJECTS]`](#namespaces-projects)
+      - [Namespaces / Components](#namespaces--components)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -61,7 +61,7 @@
 
 I strongly believe in rule that before you'll start solving the problem with the code you should understand well what is the problem and solve it conceptualy first.
 
-[IMPORTANT!] As you can assume, I've spent some time working on this document. I come to some conclusions and have some thoughts and ideas but they are just MY conclusions and just MY foughts and ideas. PLEASE don't feel obliged to agree with me just because I spent my time working on it. If you think I'm wrong or/and you think we could improve it PLEASE write about it. Even if it would completely scrap my ideas/suggestions/plans. Let's treat it as a working document and have fruitful discussion.
+[**IMPORTANT!**] As you can assume, I've spent some time working on this document. I come to some conclusions and have some thoughts and ideas but they are just MY conclusions and just MY foughts and ideas. PLEASE don't feel obliged to agree with me just because I spent my time working on it. If you think I'm wrong or/and you think we could improve it PLEASE write about it. Even if it would completely scrap my ideas/suggestions/plans. Let's treat it as a working document and have fruitful discussion.
 
 ### tl;dr
 
@@ -173,7 +173,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 ##### Prod Storage / Components
 
-- **Components per [[PROJECT]](#prod-storage-projects)**:
+- **Components per [`[PROJECT]`](#prod-storage-projects)**:
   - Project:
     - `[PROJECT]`
   - API:
@@ -197,7 +197,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `k8s-infra-gcr-promoter`:
       - display_name: `k8s-infra container image promoter`
 
-  - **Components per [[PROJECT]](#prod-storage-projects) per [[REGION]](#prod-storage-regions)**:
+  - **Components per [`[PROJECT]`](#prod-storage-projects) per [`[REGION]`](#prod-storage-regions)**:
 
     > [**Hint**]: Currently regions we are creating our resources at are: "`us`", "`eu`", "`asia`". So if you see for example GCR Resource with the name `[REGION]_[PROJECT]` for the project `k8s-artifacts-prod` (which we use for this example purposes) there will be three cloud registries (GCR) created: `us_k8s-artifacts-prod`, `eu_k8s-artifacts-prod` and `asia_k8s-artifacts-prod`
 
@@ -217,41 +217,41 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 - **Additional components for project: `k8s-artifacts-prod`** (special cases):
   - GCS Bucket:
     - `gs://k8s-artifacts-prod`:
-      - website[<sup>1</sup>](#reference "Special case"):
+      - website[<sup>1</sup>](#reference-for-prod-storage "Special case"):
         - main_page_suffix: `index.html`
-    - `gs://k8s-artifacts-cni`[<sup>2</sup>](#reference "Special case"):
+    - `gs://k8s-artifacts-cni`[<sup>2</sup>](#reference-for-prod-storage "Special case"):
       - location: `us`
       - bucketpolicyonly: `true`
       - retention: `10y`
   - IAM:
-    - `gs://k8s-artifacts-cni`[<sup>2</sup>](#reference "Special case"):
+    - `gs://k8s-artifacts-cni`[<sup>2</sup>](#reference-for-prod-storage "Special case"):
       - `allUsers:objectViewer`
       - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
       - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
       - `group:k8s-infra-push-cni@kubernetes.io:objectAdmin`
       - `group:k8s-infra-push-cni@kubernetes.io:legacyBucketReader`
   - IAM Policy Binding:
-    - `roles/run.admin`[<sup>10</sup>](#reference "Special case"):
+    - `roles/run.admin`[<sup>10</sup>](#reference-for-prod-storage "Special case"):
       - `group:k8s-infra-artifact-admins@kubernetes.io`
-    - `roles/serviceusage.serviceUsageConsumer`[<sup>10</sup>](#reference "Special case"):
+    - `roles/serviceusage.serviceUsageConsumer`[<sup>10</sup>](#reference-for-prod-storage "Special case"):
       - `group:k8s-infra-artifact-admins@kubernetes.io`
-    - `roles/logging.logWriter`[<sup>11</sup>](#reference "Special case"):
+    - `roles/logging.logWriter`[<sup>11</sup>](#reference-for-prod-storage "Special case"):
       - `k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`
-    - `roles/errorreporting.writer`[<sup>11</sup>](#reference "Special case"):
+    - `roles/errorreporting.writer`[<sup>11</sup>](#reference-for-prod-storage "Special case"):
       - `k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`
-  - IAM Policy Binding for Service Account[<sup>10</sup>](#reference "Special case"):
+  - IAM Policy Binding for Service Account[<sup>10</sup>](#reference-for-prod-storage "Special case"):
     - `k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`:
       - role: `roles/iam.serviceAccountUser`
       - members:
         - `group:k8s-infra-artifact-admins@kubernetes.io`
-  - IAM Service Account[<sup>11</sup>](#reference "Special case"):
+  - IAM Service Account[<sup>11</sup>](#reference-for-prod-storage "Special case"):
     - `k8s-infra-gcr-auditor`:
       - project: `k8s-artifacts-prod`
       - display_name: `k8s-infra container image auditor`
     - `k8s-infra-gcr-auditor-invoker`:
       - project: `k8s-artifacts-prod`
       - display_name: `k8s-infra container image auditor invoker`
-  - Cloud Run Service IAM Policy Binding[<sup>11</sup>](#reference "Special case"):
+  - Cloud Run Service IAM Policy Binding[<sup>11</sup>](#reference-for-prod-storage "Special case"):
     - `cip-auditor`:
       - members:
         - `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`
@@ -260,13 +260,13 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - preojct: `k8s-artifacts-prod`
       - region: `us-central1`
 
-  - **Components per [FILE] in `[MODULE_PATH]/static/prod-storage` directory**[<sup>3</sup>](#reference "Special case")<sup>,</sup>[<sup>4</sup>](#reference "Example of how to achieve it with Terraform"):
+  - **Components per `[FILE]` in `[MODULE_PATH]/static/prod-storage` directory**[<sup>3</sup>](#reference-for-prod-storage "Special case")<sup>,</sup>[<sup>4</sup>](#reference-for-prod-storage "Example of how to achieve it with Terraform"):
     - GCS Bucket Object:
       - name: `[FILE]`
       - source: `[MODULE_PATH]/static/prod-storage/[FILE]`
       - bucket: `gs://k8s-artifacts-prod`
 
-- **Components for project: `k8s-cip-test-prod`**[<sup>5</sup>](#reference "Special case"):
+- **Components for project: `k8s-cip-test-prod`**[<sup>5</sup>](#reference-for-prod-storage "Special case"):
   - IAM Policy Binding:
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
@@ -279,16 +279,16 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
         - `group:k8s-infra-staging-cip-test@kubernetes.io:legacyBucketOwner`
 
-- **Components for project: `k8s-staging-cip-test`**[<sup>5</sup>](#reference "Special case"):
+- **Components for project: `k8s-staging-cip-test`**[<sup>5</sup>](#reference-for-prod-storage "Special case"):
   - IAM Policy Binding:
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
-  - IAM[<sup>6</sup>](#reference "Special case"):
+  - IAM[<sup>6</sup>](#reference-for-prod-storage "Special case"):
     - `gs://artifacts.k8s-staging-cip-test.appspot.com`
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-cip-test-prod.iam.gserviceaccount.com:objectAdmin`
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-cip-test-prod.iam.gserviceaccount.com:legacyBucketOwner`
 
-  - **Components for project: `k8s-staging-cip-test` per [[REGION]](#prod-storage-regions)**:
+  - **Components for project: `k8s-staging-cip-test` per [`[REGION]`](#prod-storage-regions)**:
     - GCS Bucket:
       - `gs://[REGION].artifacts.k8s-staging-cip-test.appspot.com`
     - IAM:
@@ -296,7 +296,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
         - `group:k8s-infra-staging-cip-test@kubernetes.io:legacyBucketOwner`
 
-- **Components for project: `k8s-gcr-backup-test-prod`**[<sup>5</sup>](#reference "Special case"):
+- **Components for project: `k8s-gcr-backup-test-prod`**[<sup>5</sup>](#reference-for-prod-storage "Special case"):
   - IAM Policy Binding:
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
@@ -309,7 +309,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
         - `group:k8s-infra-staging-cip-test@kubernetes.io:legacyBucketOwner`
 
-- **Components for project: `k8s-gcr-backup-test-prod-bak`**[<sup>5</sup>](#reference "Special case"):
+- **Components for project: `k8s-gcr-backup-test-prod-bak`**[<sup>5</sup>](#reference-for-prod-storage "Special case"):
   - IAM Policy Binding:
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
@@ -322,23 +322,23 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
         - `group:k8s-infra-staging-cip-test@kubernetes.io:legacyBucketOwner`
 
-- **Components for project: `k8s-gcr-audit-test-prod`**[<sup>5</sup>](#reference "Special case"):
+- **Components for project: `k8s-gcr-audit-test-prod`**[<sup>5</sup>](#reference-for-prod-storage "Special case"):
   - IAM Policy Binding:
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
-    - `roles/errorreporting.admin`[<sup>7</sup>](#reference "Special case")
+    - `roles/errorreporting.admin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
-    - `roles/logging.admin`[<sup>7</sup>](#reference "Special case")
+    - `roles/logging.admin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
-    - `roles/pubsub.admin`[<sup>7</sup>](#reference "Special case")
+    - `roles/pubsub.admin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
-    - `roles/resourcemanager.projectIamAdmin`[<sup>7</sup>](#reference "Special case")
+    - `roles/resourcemanager.projectIamAdmin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
-    - `roles/run.admin`[<sup>7</sup>](#reference "Special case")
+    - `roles/run.admin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
-    - `roles/serverless.serviceAgent`[<sup>7</sup>](#reference "Special case")
+    - `roles/serverless.serviceAgent`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
-    - `roles/storage.admin`[<sup>7</sup>](#reference "Special case")
+    - `roles/storage.admin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
   
   - **Components for project: `k8s-gcr-audit-test-prod` per [[REGION]](#prod-storage-regions)**:
@@ -349,17 +349,17 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
         - `group:k8s-infra-staging-cip-test@kubernetes.io:legacyBucketOwner`
 
-- **Components for project: `k8s-release-test-prod`**[<sup>8</sup>](#reference "Special case"):
+- **Components for project: `k8s-release-test-prod`**[<sup>8</sup>](#reference-for-prod-storage "Special case"):
   - IAM Policy Binding:
     - `roles/viewer`:
       - `group:k8s-infra-staging-kubernetes@kubernetes.io`
       - `group:k8s-infra-staging-release-test@kubernetes.io`
   - IAM:
-    - `gs://k8s-release-test-prod`[<sup>9</sup>](#reference "Special case"):
+    - `gs://k8s-release-test-prod`[<sup>9</sup>](#reference-for-prod-storage "Special case"):
       - `serviceAccount:615281671549@cloudbuild.gserviceaccount.com:objectAdmin`
       - `serviceAccount:615281671549@cloudbuild.gserviceaccount.com:legacyBucketReader`
   
-  - **Components for project: `k8s-release-test-prod` per [[REGION]](#prod-storage-regions)**:
+  - **Components for project: `k8s-release-test-prod` per [`[REGION]`](#prod-storage-regions)**:
     - GCS Bucket:
       - `gs://[REGION].artifacts.k8s-release-test-prod.appspot.com`
     - IAM:
@@ -443,12 +443,12 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - target_http_proxy: `k8s-artifacts-prod`
       - ports:
         - `80`
-      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#prod-storage-gclb--reference "Example how to get [GLOBAL_ADDRESS] using terraform")
+      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#reference-for-prod-storage-gclb) "Example how to get [GLOBAL_ADDRESS] using terraform")
     - `k8s-artifacts-prod-https`:
       - target_https_proxy: `k8s-artifacts-prod`
       - ports:
         - `443`
-      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#prod-storage-gclb--reference "Example how to get [GLOBAL_ADDRESS] using terraform")
+      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#reference-for-prod-storage-gclb) "Example how to get [GLOBAL_ADDRESS] using terraform")
 
 ##### Reference for Prod Storage GCLB
 
@@ -504,7 +504,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 #### Staging Storage
 
-##### What components are needed for each [PROJECT]
+##### What components are needed for each `[PROJECT]`
 
 - Project `k8s-staging-[PROJECT]` ([ensure-staging-storage.***ensure_project***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L110) / [lib.ensure_project.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L81-L96)):
   - organization: `758905017065` ([ensure-staging-storage.***ensure_project***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L110) / [lib.ensure_project.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L81-L84))
@@ -559,7 +559,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
   - `gs://artifacts.k8s-staging-[PROJECT].appspot.com` ([ensure-staging-storage.***ensure_gcr_repo***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L124) / [lib_gcr.ensure_gcr_repo.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib_gcr.sh#L69-L79)):
     - bucketpolicyonly: `true` ([ensure-staging-storage.***ensure_gcr_repo***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L124) / [lib_gcr.ensure_gcr_repo.***gsutil***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib_gcr.sh#L82))
 
-##### What components are needed for each of RELEASE_STAGING_PROJECTS [RS_PROJECT]
+##### What components are needed for each of RELEASE_STAGING_PROJECTS `[RS_PROJECT]`
 
 > [@bartsmykla: I think it's not consistent to put resources for release projects here, even if they are release ones. I think there should be created separate place for it]
 
@@ -567,7 +567,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
   - `roles/viewer`:
     - `group:k8s-infra-release-viewers@kubernetes.io`
 
-##### What components are needed for project: k8s-staging-release-test
+##### What components are needed for project: `k8s-staging-release-test`
 
 - IAM Policy Binding:
   - `roles/cloudkms.admin`:
@@ -592,7 +592,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `k8s-conform`
   - API:
     - `storage-component`
-  - **Components for project: `k8s-conform` per [[BUCKET]](#conformance-storage-buckets)**:
+  - **Components for project: `k8s-conform` per [`[BUCKET]`](#conformance-storage-buckets)**:
     - GCS Bucket:
       - `gs://k8s-confirm-[BUCKET]`:
         - bucketpolicyonly: `true`
@@ -753,7 +753,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ##### Release Projects / Components
 
-- **Components per [[PROJECT]](#release-projects-projects)**:
+- **Components per [`[PROJECT]`](#release-projects-projects)**:
   - Project:
     - `[PROJECT]`
   - IAM Policy Binding:
@@ -843,11 +843,11 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ---
 
-#### GSuite[<sup>1</sup>](#reference-for-gsuite)
+#### GSuite
 
 ##### GSuite / Components
 
-- **Components for project: `k8s-gsuite`**:
+- **Components for project: `k8s-gsuite`**[<sup>1</sup>](#reference-for-gsuite):
   - Project:
     - `k8s-gsuite`
   - API:
@@ -866,16 +866,16 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ---
 
-#### NAMESPACES
+#### Namespaces
 
-##### NAMESPACES `[PROJECTS]`
+##### Namespaces `[PROJECTS]`
 
 - `gcsweb`
 - `publishing-bot`
 - `k8s-io-prod`
 - `k8s-io-canary`
 
-##### NAMESPACES / Components
+##### Namespaces / Components
 
 - **Components per [[PROJECT]](#namespaces-projects)**:
   - Kubernetes Namespace:
