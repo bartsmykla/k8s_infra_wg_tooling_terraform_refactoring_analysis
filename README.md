@@ -25,6 +25,9 @@
       - [What components are needed for each [PROJECT]](#what-components-are-needed-for-each-project)
       - [What components are needed for each of RELEASE_STAGING_PROJECTS [RS_PROJECT]](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
       - [What components are needed for project: k8s-staging-release-test](#what-components-are-needed-for-project-k8s-staging-release-test)
+    - [Conformance Storage](#conformance-storage)
+      - [Conformance Storage `[BUCKETS]`](#conformance-storage-buckets)
+      - [Conformance Storage / Components](#conformance-storage--components)
     - [CIP Auditor](#cip-auditor)
       - [Env CIP Auditor](#env-cip-auditor)
         - [Env CIP Auditor / Components](#env-cip-auditor--components)
@@ -568,6 +571,40 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `group:k8s-infra-release-admins@kubernetes.io`
   - `roles/cloudkms.cryptoKeyEncrypterDecrypter`:
     - `group:k8s-infra-release-admins@kubernetes.io`
+
+---
+
+#### Conformance Storage
+
+##### Conformance Storage `[BUCKETS]`
+
+- `capi-openstack`
+- `cri-o`
+- `huaweicloud`
+
+##### Conformance Storage / Components
+
+- **Components for project: `k8s-conform`**:
+  - Project:
+    - `k8s-conform`
+  - API:
+    - `storage-component`
+  - **Components for project: `k8s-conform` per [[BUCKET]](#conformance-storage-buckets)**:
+    - GCS Bucket:
+      - `gs://k8s-confirm-[BUCKET]`:
+        - bucketpolicyonly: `true`
+        - location: `us`
+        - retention: `10y`
+      - IAM:
+        - `gs://k8s-confirm-[BUCKET]`:
+          - `allUsers:objectViewer`
+          - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+          - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+          - `group:k8s-infra-conform-[BUCKET]@kubernetes.io:objectAdmin`
+          - `group:k8s-infra-conform-[BUCKET]@kubernetes.io:legacyBucketReader`
+      - IAM Policy Binding:
+        - `roles/viewer`:
+          - `group:k8s-infra-artifact-admins@kubernetes.io`
 
 ---
 
