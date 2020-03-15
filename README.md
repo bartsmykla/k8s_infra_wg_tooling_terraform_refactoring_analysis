@@ -461,6 +461,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 - Components for project `k8s-artifacts-prod`:
   
   > Atribute: `[PROJECT_NUMBER]` will be taken from the project component attributes reference
+  >
+  > [**todo(@bartsmykla)**]: Put some terraform example maybe?
 
   - Service:
     - `serviceusage.googleapis.com`
