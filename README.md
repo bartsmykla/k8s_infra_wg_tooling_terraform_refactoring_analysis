@@ -31,6 +31,10 @@
       - [CIP Auditor Deploy](#cip-auditor-deploy)
         - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
       - [Reference for CIP Auditor](#reference-for-cip-auditor)
+    - [Release Projects](#release-projects)
+      - [Release Projects `[PROJECTS]`](#release-projects-projects)
+      - [Release Projects / Components](#release-projects--components)
+      - [Reference for Release Projects](#reference-for-release-projects)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -691,6 +695,86 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
   ```
 
 - <sup>3</sup> Maybe we can take the `[CIP_AUDITOR_DIGEST]` from the data source: `[google_container_registry_image](https://www.terraform.io/docs/providers/google/d/google_container_registry_image.html)`
+
+---
+
+#### Release Projects
+
+##### Release Projects `[PROJECTS]`
+
+- `k8s-staging-release-test`
+- `k8s-release-test-prod`
+
+##### Release Projects / Components
+
+- **Components per [[PROJECT]](#release-projects-projects)**:
+  - Project:
+    - `[PROJECT]`
+  - IAM Policy Binding:
+    - `roles/viewer`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+      - `group:k8s-infra-release-editors@kubernetes.io`
+      - `group:k8s-infra-release-viewers@kubernetes.io`
+      - `group:k8s-infra-artifact-admins@kubernetes.io`
+    - `roles/cloudbuild.builds.editor`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+      - `group:k8s-infra-release-editors@kubernetes.io`
+    - `roles/serviceusage.serviceUsageConsumer`[<sup>1</sup>](#reference-for-release-projects "Comment about temporary nature of this role here"):
+      - `group:k8s-infra-release-admins@kubernetes.io`
+      - `group:k8s-infra-release-editors@kubernetes.io`
+    - `roles/cloudbuild.builds.builder`:
+      - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com`
+    - `roles/cloudkms.admin`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+    - `roles/cloudkms.cryptoKeyEncrypterDecrypter`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+  - API:
+    - `containerregistry`
+    - `storage-component`
+    - `cloudbuild`
+    - `cloudkms`
+  - GCR:
+    - `[PROJECT]`
+  - IAM:
+    - `gs://artifacts.[PROJECT].appspot.com`
+      - `allUsers:objectViewer`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+      - `group:k8s-infra-release-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-release-admins@kubernetes.io:legacyBucketReader`
+      - `group:k8s-infra-release-editors@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-release-editors@kubernetes.io:legacyBucketReader`
+    - `gs://[PROJECT]`:
+      - `allUsers:objectViewer`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+      - `group:k8s-infra-release-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-release-admins@kubernetes.io:legacyBucketReader`
+      - `group:k8s-infra-release-editors@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-release-editors@kubernetes.io:legacyBucketReader`
+    - `gs://[PROJECT]-gcb`:
+      - `allUsers:objectViewer`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+      - `group:k8s-infra-release-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-release-admins@kubernetes.io:legacyBucketReader`
+      - `group:k8s-infra-release-editors@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-release-editors@kubernetes.io:legacyBucketReader`
+      - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com:objectCreator`
+      - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com:objectViewer`
+  - GCS Bucket:
+    - `gs://artifacts.[PROJECT].appspot.com`:
+      - bucketpolicyonly: `true`
+    - `gs://[PROJECT]`:
+      - bucketpolicyonly: `true`
+      - location: `us`
+    - `gs://[PROJECT]-gcb`:
+      - bucketpolicyonly: `true`
+      - location: `us`
+
+##### Reference for Release Projects
+
+- <sup>1</sup> [There is a comment from @justaugustus](https://github.com/kubernetes/k8s.io/blob/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/infra/gcp/lib.sh#L316-L320) it's temporary and we should refactor this once we develop custom roles
 
 ---
 
