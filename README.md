@@ -18,6 +18,9 @@
       - [Prod Storage / Components](#prod-storage--components)
       - [Notes for Prod Storage](#notes-for-prod-storage)
       - [Reference for Prod Storage](#reference-for-prod-storage)
+    - [Prod Storage GCLB](#prod-storage-gclb)
+      - [Prod Storage GCLB / Components](#prod-storage-gclb--components)
+      - [Prod Storage GCLB / Reference](#prod-storage-gclb--reference)
     - [Staging Storage](#staging-storage)
       - [What components are needed for each [PROJECT]](#what-components-are-needed-for-each-project)
       - [What components are needed for each of RELEASE_STAGING_PROJECTS [RS_PROJECT]](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
@@ -385,6 +388,100 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 - <sup>9</sup> [Special case: `ensure-prod-storage.sh#L204-L206`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage.sh#L204-L206)
 - <sup>10</sup> [Special case: `ensure-prod-storage.sh#L214-L215`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage.sh#L214-L215)
 - <sup>11</sup> [Special case: `ensure-prod-storage.sh#L219`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage.sh#L219)
+
+---
+
+#### Prod Storage GCLB
+
+##### Prod Storage GCLB / Components
+
+- **Additional components for project: `k8s-artifacts-prod`**
+  - Project:
+    - `k8s-artifacts-prod`
+  - API:
+    - `compute`
+  - Compute Global Address:
+    - `k8s-artifacts-prod`:
+      - description: `IP Address for GCLB for binary artifacts`
+  - Compute Backend Bucket:
+    - `k8s-artifacts-prod`:
+      - gcs_bucket_name: `k8s-artifacts-prod`
+  - Compute Url Map:
+    - `k8s-artifacts-prod`:
+      - default_backend_bucket: `k8s-artifacts-prod`
+  - Compute Target HTTP Proxy:
+    - `k8s-artifacts-prod`:
+      - url_map: `k8s-artifacts-prod`
+  - Compute Target HTTPS Proxy:
+    - `k8s-artifacts-prod`:
+      - url_map: `k8s-artifacts-prod`
+      - ssl_certificates:
+        - `k8s-artifacts-prod`
+  - Compute SSL Certificate:
+    - `k8s-artifacts-prod`:
+      - domains:
+        - `artifacts.k8s.io`
+  - Compute Global Forwarding Rule:
+    - `k8s-artifacts-prod-http`:
+      - target_http_proxy: `k8s-artifacts-prod`
+      - ports:
+        - `80`
+      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#prod-storage-gclb--reference "Example how to get [GLOBAL_ADDRESS] using terraform")
+    - `k8s-artifacts-prod-https`:
+      - target_https_proxy: `k8s-artifacts-prod`
+      - ports:
+        - `443`
+      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#prod-storage-gclb--reference "Example how to get [GLOBAL_ADDRESS] using terraform")
+
+##### Prod Storage GCLB / Reference
+
+- <sup>1</sup> The example which shows how to get the `[GLOBAL_ADDRESS]` using terraform with all intermediate components
+
+  > [**todo(@bartsmykla)**]: Verify it works
+
+  ```terraform
+  resource "google_compute_global_address" "k8s_artifacts_prod" {
+    name        = "k8s-artifacts-prod"
+    description = "IP Address for GCLB for binary artifacts"
+  }
+
+  resource "google_storage_bucket" "k8s_artifacts_prod" {
+    name          = "k8s-artifacts-prod"
+    location      = "US"
+
+    bucket_policy_only = true
+
+    website {
+      main_page_suffix = "index.html"
+    }
+
+    retention_policy {
+      retention_period = 315360000 // 10 years
+    }
+  }
+
+  resource "google_compute_backend_bucket" "k8s_artifacts_prod" {
+    name        = "k8s-artifacts-prod"
+    bucket_name = google_storage_bucket.k8s_artifacts_prod.name
+  }
+
+  resource "google_compute_url_map" "k8s_artifacts_prod" {
+    name            = "k8s-artifacts-prod"
+    default_service = google_compute_backend_bucket.k8s_artifacts_prod.self_link
+  }
+
+  resource "google_compute_target_http_proxy" "k8s_artifacts_prod" {
+    name        = "k8s-artifacts-prod"
+    url_map     = google_compute_url_map.k8s_artifacts_prod.self_link
+  }
+
+  resource "google_compute_global_forwarding_rule" "k8s_artifacts_prod_http" {
+    name       = "k8s-artifacts-prod-http"
+    target     = google_compute_target_http_proxy.k8s_artifacts_prod.self_link
+    ip_address = google_compute_global_address.k8s_artifacts_prod.address
+    port_range = "80"
+  }
+  ```
 
 ---
 
