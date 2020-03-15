@@ -654,7 +654,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ##### CIP Auditor Deploy
 
-> [**todo(@listx)**]: Do we need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other then `k8s-artifacts-prod` projects too?
+> [**todo(@listx)**]: Do we need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other than `k8s-artifacts-prod` projects too?
 
 ###### CIP Auditor Deploy / Components
 
@@ -989,4 +989,4 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 - @listx:
   - > [[**todo(@listx)**]: I don't undestand why we first create dummy Cloud Run Service in `ensure-env-cip-auditor.sh` and then overwriting it in `cip-auditor/deploy.sh`. What stands behind the decision to do it that way? Can we eliminate the step for the dummy service?](#cip-auditor)
-  - > [[**todo(@listx)**]: Do we really need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other then `k8s-artifacts-prod` projects too?](#cip-auditor-deploy)
+  - > [[**todo(@listx)**]: Do we really need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other than `k8s-artifacts-prod` projects too?](#cip-auditor-deploy)
