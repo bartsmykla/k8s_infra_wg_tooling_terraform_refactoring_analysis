@@ -43,6 +43,9 @@
     - [GSuite<sup>1</sup>](#gsuitesup1sup)
       - [GSuite / Components](#gsuite--components)
       - [Reference for GSuite](#reference-for-gsuite)
+    - [NAMESPACES](#namespaces)
+      - [NAMESPACES `[PROJECTS]`](#namespaces-projects)
+      - [NAMESPACES / Components](#namespaces--components)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -860,6 +863,115 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 ##### Reference for GSuite
 
 - <sup>1</sup> [At the end of script for provisioning GSuite resources](https://github.com/kubernetes/k8s.io/blob/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/infra/gcp/ensure-gsuite.sh#L72-L86) there is mention about some manual tasks human needs to do to grant GSuite's service account access (it also needs to be acknowdleged by the human who runs the script by pressing enter)
+
+---
+
+#### NAMESPACES
+
+##### NAMESPACES `[PROJECTS]`
+
+- `gcsweb`
+- `publishing-bot`
+- `k8s-io-prod`
+- `k8s-io-canary`
+
+##### NAMESPACES / Components
+
+- **Components per [[PROJECT]](#namespaces-projects)**:
+  - Kubernetes Namespace:
+    - `[PROJECT]`
+  - Kubernetes Role:
+    - `namespace-user`:
+      - namespace: `[PROJECT]`
+      - rules:
+        - `""`:
+          - resources:
+            - `configmaps`
+            - `endpoints`
+            - `persistentvolumeclaims`
+            - `pods`
+            - `resourcequotas`
+            - `services`
+          - verbs:
+            - `*`
+        - `""`:
+          - resources:
+            - `secrets`
+          - verbs:
+            - `list`
+        - `""`:
+          - resources:
+            - `events`
+          - verbs:
+            - `get`
+            - `list`
+        - `certmanager.k8s.io`:
+          - resources:
+            - `certificates`
+          - verbs:
+            - `*`
+        - `coordination.k8s.io`:
+          - resources:
+            - `leases`
+          - verbs:
+            - `*`
+        - `batch`:
+          - resources:
+            - `cronjobs`
+            - `jobs`
+          - verbs:
+            - `*`
+        - `autoscaling`:
+          - resources:
+            - `horizontalpodautoscalers`
+          - verbs:
+            - `*`
+        - `apps`:
+          - resources:
+            - `deployments`
+          - verbs:
+            - `*`
+        - `extensions`:
+          - resources:
+            - `deployments`
+            - `ingresses`
+            - `networkpolicies`
+          - verbs:
+            - `*`
+        - `networking.k8s.io"`:
+          - resources:
+            - `networkpolicies`
+          - verbs:
+            - `*`
+        - `storage.k8s.io`:
+          - resources:
+            - `storageclasses`
+          - verbs:
+            - `list`
+        - `scheduling.k8s.io`:
+          - resources:
+            - `priorityclasses`
+          - verbs:
+            - `list`
+        - `rbac.authorization.k8s.io`:
+          - resources:
+            - `clusterrolebindings`
+            - `clusterroles`
+            - `rolebindings`
+            - `roles`
+          - verbs:
+            - `get`
+            - `list`
+  - Kubernetes Role Binding:
+    - `namespace-user`:
+      - namespace: `[PROJECT]`
+      - subjects:
+        - `k8s-infra-rbac-[PROJECT]@kubernetes.io`:
+          - kind: `Group`
+      - role_ref:
+        - name: `namespace-user`
+        - kind: `Role`
+        - api_group: `rbac.authorization.k8s.io`
 
 ---
 
