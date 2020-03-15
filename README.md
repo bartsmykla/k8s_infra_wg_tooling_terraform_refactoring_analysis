@@ -49,6 +49,8 @@
 
 ---
 
+> [**todo(@bartsmykla)**]: Remember to write section with suggestion to rewrite [`k/k8s.io/groups`](https://github.com/kubernetes/k8s.io/tree/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/groups) to custom terraform provider
+
 ## Preface
 
 I strongly believe in rule that before you'll start solving the problem with the code you should understand well what is the problem and solve it conceptualy first.
