@@ -484,8 +484,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `cip-auditor-invoker`:
       - topic: `gcr`
       - expiration_policy: `never`
-      - push_endpoint: [CLOUD_RUN_SERVICE.cip-auditor.ENDPOINT]
-      - push_auth_service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`[<sup>1</sup>]
+      - push_endpoint: `[CLOUD_RUN_SERVICE.cip-auditor.ENDPOINT]`
+      - push_auth_service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`[<sup>1</sup>](#reference-for-env-cip-auditor)
 
 ##### Reference for Env CIP Auditor
 
