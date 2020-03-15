@@ -37,6 +37,9 @@
       - [Reference for Release Projects](#reference-for-release-projects)
     - [Releng](#releng)
       - [Releng / Components](#releng--components)
+    - [GSuite<sup>1</sup>](#gsuitesup1sup)
+      - [GSuite / Components](#gsuite--components)
+      - [Reference for GSuite](#reference-for-gsuite)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -184,7 +187,6 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - `group:k8s-infra-artifact-admins@kubernetes.io`
   - IAM Service Account:
     - `k8s-infra-gcr-promoter`:
-      - project: `[PROJECT]`
       - display_name: `k8s-infra container image promoter`
 
   - **Components per [[PROJECT]](#prod-storage-projects) per [[REGION]](#prod-storage-regions)**:
@@ -796,6 +798,29 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
       - `group:k8s-infra-release-admins@kubernetes.io`
   - API:
     - `cloudkms`
+
+---
+
+#### GSuite[<sup>1</sup>](#reference-for-gsuite)
+
+##### GSuite / Components
+
+- **Components for project: `k8s-gsuite`**:
+  - Project:
+    - `k8s-gsuite`
+  - API:
+    - `admin`
+    - `groupssettings`
+  - IAM Service Account:
+    - `gsuite-groups-manager`:
+      - display_name: `Grants access to the googlegroups API in kubernetes.io GSuite`
+  - IAM Policy Binding:
+    - `roles/owner`:
+      - `user:wg-k8s-infra-api@kubernetes.io`
+
+##### Reference for GSuite
+
+- <sup>1</sup> [At the end of script for provisioning GSuite resources](https://github.com/kubernetes/k8s.io/blob/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/infra/gcp/ensure-gsuite.sh#L72-L86) there is mention about some manual tasks human needs to do to grant GSuite's service account access (it also needs to be acknowdleged by the human who runs the script by pressing enter)
 
 ---
 
