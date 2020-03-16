@@ -42,12 +42,13 @@
       - [Releng / Components](#releng--components)
     - [GSuite](#gsuite)
       - [GSuite / Components](#gsuite--components)
+      - [Yaml representation of *GSuite Components*<sup>G1</sup>](#yaml-representation-of-gsuite-componentssupg1sup)
       - [Reference for GSuite](#reference-for-gsuite)
     - [Namespaces](#namespaces)
       - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
       - [Namespaces `[PROJECTS]`](#namespaces-projects)
       - [Namespaces / Components](#namespaces--components)
-      - [Yaml representation of Namespaces Components<sup>G1</sup>](#yaml-representation-of-namespaces-componentssupg1sup)
+      - [Yaml representation of *Namespaces Components*<sup>G1</sup>](#yaml-representation-of-namespaces-componentssupg1sup)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -865,6 +866,27 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
     - `roles/owner`:
       - `user:wg-k8s-infra-api@kubernetes.io`
 
+##### Yaml representation of *GSuite Components*[<sup>G1</sup>](#global-reference)
+
+```yaml
+- google_project:
+  - name: k8s-gsuite
+- google_project_service:
+  - service: admin.googleapis.com
+    project: k8s-gsuite
+  - service: groupssettings.googleapis.com
+    project: k8s-gsuite
+- service_account:
+  - account_id: gsuite-groups-manager
+    display_name: Grants access to the googlegroups API in kubernetes.io GSuite
+    project: k8s-gsuite
+- google_project_iam_binding:
+  - role: roles/owner
+    members:
+      - user:wg-k8s-infra-api@kubernetes.io
+    project: k8s-gsuite
+```
+
 ##### Reference for GSuite
 
 - <sup>1</sup> [At the end of script for provisioning GSuite resources](https://github.com/kubernetes/k8s.io/blob/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/infra/gcp/ensure-gsuite.sh#L72-L86) there is mention about some manual tasks human needs to do to grant GSuite's service account access (it also needs to be acknowdleged by the human who runs the script by pressing enter)
@@ -985,7 +1007,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
         - kind: `Role`
         - api_group: `rbac.authorization.k8s.io`
 
-##### Yaml representation of Namespaces Components[<sup>G1</sup>](#global-reference)
+##### Yaml representation of *Namespaces Components*[<sup>G1</sup>](#global-reference)
 
 ```yaml
 - kubernetes_namespace:
