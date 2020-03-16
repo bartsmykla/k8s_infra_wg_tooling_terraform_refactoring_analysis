@@ -35,17 +35,19 @@
         - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
       - [Reference for CIP Auditor](#reference-for-cip-auditor)
     - [Release Projects](#release-projects)
+      - [Terraform resources for Release Projects](#terraform-resources-for-release-projects)
       - [Release Projects `[PROJECTS]`](#release-projects-projects)
       - [Release Projects / Components](#release-projects--components)
+      - [Yaml representation of *Release Projects Components*<sup>G1</sup><sup>,</sup>[<sup>G2</sup>](#global-reference)](#yaml-representation-of-release-projects-componentssupg1supsupsupsupg2sup)
       - [Reference for Release Projects](#reference-for-release-projects)
     - [Releng](#releng)
       - [Releng / Components](#releng--components)
       - [Terraform resources for Releng](#terraform-resources-for-releng)
-      - [Yaml representation of *Releng Components*<sup>G1</sup>](#yaml-representation-of-releng-componentssupg1sup)
+      - [Yaml representation of *Releng Components*<sup>G1</sup><sup>,</sup>[<sup>G2</sup>](#global-reference)](#yaml-representation-of-releng-componentssupg1supsupsupsupg2sup)
     - [GSuite](#gsuite)
       - [Terraform resources for GSuite](#terraform-resources-for-gsuite)
       - [GSuite / Components](#gsuite--components)
-      - [Yaml representation of *GSuite Components*<sup>G1</sup>](#yaml-representation-of-gsuite-componentssupg1sup)
+      - [Yaml representation of *GSuite Components*<sup>G1</sup><sup>,</sup>[<sup>G2</sup>](#global-reference)](#yaml-representation-of-gsuite-componentssupg1supsupsupsupg2sup)
       - [Reference for GSuite](#reference-for-gsuite)
     - [Namespaces](#namespaces)
       - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
@@ -771,6 +773,19 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ---
 
+##### Terraform resources for Release Projects
+
+- Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
+  - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
+  - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
+  - [`google_container_registry`](https://www.terraform.io/docs/providers/google/r/google_container_registry.html "Resource: Google Container Registry")
+  - [`google_storage_bucket`](https://www.terraform.io/docs/providers/google/r/google_storage_bucket.html "Resource: Google Storage Bucket")
+  - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam_binding.html "Resource: Google Project IAM Binding")
+  - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam_member.html "Resource: Google Project IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_storage_bucket_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_storage_bucket_iam_binding.html "Resource: Google Storage Bucket IAM Binding")
+  - [`google_storage_bucket_iam_member`](https://www.terraform.io/docs/providers/google/r/google_storage_bucket_iam_member.html "Resource: Google Storage Bucket IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_storage_bucket_acl`](https://www.terraform.io/docs/providers/google/r/google_storage_bucket_acl.html "Resource: Google Storage Bucket ACL")
+
 ##### Release Projects `[PROJECTS]`
 
 - `k8s-staging-release-test`
@@ -843,6 +858,171 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
       - bucketpolicyonly: `true`
       - location: `us`
 
+##### Yaml representation of *Release Projects Components*[<sup>G1</sup>](#global-reference)<sup>,</sup>[<sup>G2</sup>](#global-reference)
+
+```yaml
+# [PROJECTS]:
+#   - k8s-staging-release-test
+#   - k8s-release-test-prod
+
+google_project:
+  - name: [PROJECT]
+google_project_service:
+  - service: containerregistry.googleapis.com
+    project: [PROJECT]
+  - service: storage-component.googleapis.com
+    project: [PROJECT]
+  - service: cloudbuild.googleapis.com
+    project: [PROJECT]
+  - service: cloudkms.googleapis.com
+    project: [PROJECT]
+google_container_registry:
+  - project: [PROJECT]
+google_storage_bucket:
+  - name: artifacts.[PROJECT].appspot.com
+    bucket_policy_only: true
+  - name: [PROJECT]
+    location: us
+    bucket_policy_only: true
+  - name: "[PROJECT]-gcb"
+    location: us
+    bucket_policy_only: true
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+      - group:k8s-infra-release-viewers@kubernetes.io
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: [PROJECT]
+  - role: roles/cloudbuild.builds.editor
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    project: [PROJECT]
+  - role: roles/serviceusage.serviceUsageConsumer
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    project: [PROJECT]
+  - role: roles/cloudbuild.builds.builder
+    members:
+      - serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com
+    project: [PROJECT]
+  - role: roles/cloudkms.admin
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: [PROJECT]
+  - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: [PROJECT]
+google_storage_bucket_iam_binding:
+  # gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  # gs://[PROJECT]
+  #
+  # bindings are exactly the same as in gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://[PROJECT]
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://[PROJECT]
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]
+  # gs://[PROJECT]-gcb
+  #
+  # IAM bindings differenciate "gs://[PROJECT]-gcb" from "gs://[PROJECT]"
+  # and "gs://artifacts.[PROJECT].appspot.com" only by binding "roles/storage.objectCreator"
+  # to "serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com"
+  # any by explicitly binding "serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com"
+  # as "roles/storage.objectViewer" which I'm not sure is necessary when "allUsers"
+  # are bound to "roles/storage.objectViewer" role already.
+  #
+  # [todo(@bartsmykla)]: check if explicitly binding
+  #                      "serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com"
+  #                      to "roles/storage.objectViewer" role is necessary here
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+      - serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.objectCreator
+    members:
+      - serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]-gcb
+google_storage_bucket_acl:
+# we need to discuss if we wan't to manage this resource because as far I'm aware,
+#  good practice is to use IAMs instead of ACLs, but in this case
+# ("legacyBucketOwner" and "legacyBucketReader") the ACLs will be implicitly
+# created, so I prefer to put them also here "explicitly".
+#
+# [IMPORTANT!] be aware that every role entity used in ACLs is in form
+#              of type and proper entity separated by "-" (not ":"),
+#              so for group "k8s-infra-release-admins@kubernetes.io"
+#              it will be "group-k8s-infra-release-admins@kubernetes.io"
+  - bucket: gs://artifacts.[PROJECT].appspot.com
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-editors@kubernetes.io
+  - bucket: gs://[PROJECT]
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-editors@kubernetes.io
+  - bucket: gs://[PROJECT]-gcb
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-editors@kubernetes.io
+```
+
 ##### Reference for Release Projects
 
 - <sup>1</sup> [There is a comment from @justaugustus](https://github.com/kubernetes/k8s.io/blob/9e17cdf48d4e9f343e0a11ecb06247897a81dd84/infra/gcp/lib.sh#L316-L320) it's temporary and we should refactor this once we develop custom roles
@@ -875,7 +1055,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
   - API:
     - `cloudkms`
 
-##### Yaml representation of *Releng Components*[<sup>G1</sup>](#global-reference)
+##### Yaml representation of *Releng Components*[<sup>G1</sup>](#global-reference)<sup>,</sup>[<sup>G2</sup>](#global-reference)
 
 ```yaml
 google_project:
@@ -927,7 +1107,7 @@ google_project_service:
     - `roles/owner`:
       - `user:wg-k8s-infra-api@kubernetes.io`
 
-##### Yaml representation of *GSuite Components*[<sup>G1</sup>](#global-reference)
+##### Yaml representation of *GSuite Components*[<sup>G1</sup>](#global-reference)<sup>,</sup>[<sup>G2</sup>](#global-reference)
 
 ```yaml
 google_project:
@@ -1205,3 +1385,4 @@ kubernetes_role_binding:
 ## Global Reference
 
 - <sup>G1</sup> The name of components and structure of Yaml was used in conjuction to terraform components
+- <sup>G2</sup> Remember the IAM Binding resources used are authoritative (they will remove all other IAM Bindings from the resource) and are used here just as an example (they are easier to read). When components needed in our infrastructure will be described with different archetypes in mind ("project" will be an archetype instead of i.e. "prod storage") we should write terraform modules in that maner, that by default archetypes will get some IAMs granted by authoritative IAM Bindings and if archetype needs unusuall ones they will by granted by IAM Member resources which are non-authoritative. (for more information you can look for example at notes of [Terraform's Google Storage Bucket IAM resource documentation](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html).

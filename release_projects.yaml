@@ -1,0 +1,160 @@
+# [PROJECTS]:
+#   - k8s-staging-release-test
+#   - k8s-release-test-prod
+
+google_project:
+  - name: [PROJECT]
+google_project_service:
+  - service: containerregistry.googleapis.com
+    project: [PROJECT]
+  - service: storage-component.googleapis.com
+    project: [PROJECT]
+  - service: cloudbuild.googleapis.com
+    project: [PROJECT]
+  - service: cloudkms.googleapis.com
+    project: [PROJECT]
+google_container_registry:
+  - project: [PROJECT]
+google_storage_bucket:
+  - name: artifacts.[PROJECT].appspot.com
+    bucket_policy_only: true
+  - name: [PROJECT]
+    location: us
+    bucket_policy_only: true
+  - name: "[PROJECT]-gcb"
+    location: us
+    bucket_policy_only: true
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+      - group:k8s-infra-release-viewers@kubernetes.io
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: [PROJECT]
+  - role: roles/cloudbuild.builds.editor
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    project: [PROJECT]
+  - role: roles/serviceusage.serviceUsageConsumer
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    project: [PROJECT]
+  - role: roles/cloudbuild.builds.builder
+    members:
+      - serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com
+    project: [PROJECT]
+  - role: roles/cloudkms.admin
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: [PROJECT]
+  - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: [PROJECT]
+google_storage_bucket_iam_binding:
+  # gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://artifacts.[PROJECT].appspot.com
+  # gs://[PROJECT]
+  #
+  # bindings are exactly the same as in gs://artifacts.[PROJECT].appspot.com
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://[PROJECT]
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://[PROJECT]
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]
+  # gs://[PROJECT]-gcb
+  #
+  # IAM bindings differenciate "gs://[PROJECT]-gcb" from "gs://[PROJECT]"
+  # and "gs://artifacts.[PROJECT].appspot.com" only by binding "roles/storage.objectCreator"
+  # to "serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com"
+  # any by explicitly binding "serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com"
+  # as "roles/storage.objectViewer" which I'm not sure is necessary when "allUsers"
+  # are bound to "roles/storage.objectViewer" role already.
+  #
+  # [todo(@bartsmykla)]: check if explicitly binding
+  #                      "serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com"
+  #                      to "roles/storage.objectViewer" role is necessary here
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+      - serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.objectCreator
+    members:
+      - serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://[PROJECT]-gcb
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+      - group:k8s-infra-release-editors@kubernetes.io
+    bucket: gs://[PROJECT]-gcb
+google_storage_bucket_acl:
+# we need to discuss if we wan't to manage this resource because as far I'm aware,
+#  good practice is to use IAMs instead of ACLs, but in this case
+# ("legacyBucketOwner" and "legacyBucketReader") the ACLs will be implicitly
+# created, so I prefer to put them also here "explicitly".
+#
+# [IMPORTANT!] be aware that every role entity used in ACLs is in form
+#              of type and proper entity separated by "-" (not ":"),
+#              so for group "k8s-infra-release-admins@kubernetes.io"
+#              it will be "group-k8s-infra-release-admins@kubernetes.io"
+  - bucket: gs://artifacts.[PROJECT].appspot.com
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-editors@kubernetes.io
+  - bucket: gs://[PROJECT]
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-editors@kubernetes.io
+  - bucket: gs://[PROJECT]-gcb
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-release-editors@kubernetes.io
