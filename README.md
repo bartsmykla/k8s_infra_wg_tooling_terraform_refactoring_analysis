@@ -898,18 +898,18 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 ##### Yaml representation of *GSuite Components*[<sup>G1</sup>](#global-reference)
 
 ```yaml
-- google_project:
+google_project:
   - name: k8s-gsuite
-- google_project_service:
+google_project_service:
   - service: admin.googleapis.com
     project: k8s-gsuite
   - service: groupssettings.googleapis.com
     project: k8s-gsuite
-- google_service_account:
+google_service_account:
   - account_id: gsuite-groups-manager
     display_name: Grants access to the googlegroups API in kubernetes.io GSuite
     project: k8s-gsuite
-- google_project_iam_binding:
+google_project_iam_binding:
   - role: roles/owner
     members:
       - user:wg-k8s-infra-api@kubernetes.io
