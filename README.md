@@ -44,6 +44,7 @@
       - [GSuite / Components](#gsuite--components)
       - [Reference for GSuite](#reference-for-gsuite)
     - [Namespaces](#namespaces)
+      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
       - [Namespaces `[PROJECTS]`](#namespaces-projects)
       - [Namespaces / Components](#namespaces--components)
       - [Yaml representation of Namespaces Components<sup>G1</sup>](#yaml-representation-of-namespaces-componentssupg1sup)
@@ -82,6 +83,8 @@ I strongly believe in rule that before you'll start solving the problem with the
 ### Components diagram
 
 ### Analysis
+
+One could ask why this much effort to analyse all this components by hand and not to just use [audit](https://github.com/kubernetes/k8s.io/tree/9e3204a10978dde2f4114940842e0546edfe32ce/audit) and take them drom there. This is a great question and the answer is I wanted to compare if all components from [audit](https://github.com/kubernetes/k8s.io/tree/9e3204a10978dde2f4114940842e0546edfe32ce/audit) are being created by [our tooling](https://github.com/kubernetes/k8s.io/tree/9e3204a10978dde2f4114940842e0546edfe32ce/infra/gcp).
 
 What I don't like is there are places like CIP Auditor which need some scripts being run in a specified sequence for it to be able to correctly provision resources. We need to make it more atomic.
 
@@ -870,6 +873,13 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 #### Namespaces
 
+##### Terraform resources for Namespaces
+
+- Provider: [`Kubernetes`](https://www.terraform.io/docs/providers/kubernetes/index.html "Provider: Kubernetes")
+  - [`kubernetes_namespace`](https://www.terraform.io/docs/providers/kubernetes/r/namespace.html "Resource: Kubernetes Namespace")
+  - [`kubernetes_role`](https://www.terraform.io/docs/providers/kubernetes/r/role.html "Resource: Kubernetes Role")
+  - [`kubernetes_role_binding`](https://www.terraform.io/docs/providers/kubernetes/r/role_binding.html "Resource: Kubernetes Role Binding")
+
 ##### Namespaces `[PROJECTS]`
 
 - `gcsweb`
@@ -880,9 +890,9 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 ##### Namespaces / Components
 
 - **Components per [[PROJECT]](#namespaces-projects)**:
-  - Kubernetes Namespace:
+  - [Kubernetes Namespace](https://www.terraform.io/docs/providers/kubernetes/r/namespace.html "Resource: Kubernetes Namespace"):
     - `[PROJECT]`
-  - Kubernetes Role:
+  - [Kubernetes Role](https://www.terraform.io/docs/providers/kubernetes/r/role.html "Resource: Kubernetes Role"):
     - `namespace-user`:
       - namespace: `[PROJECT]`
       - rules:
@@ -964,7 +974,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
           - verbs:
             - `get`
             - `list`
-  - Kubernetes Role Binding:
+  - [Kubernetes Role Binding](https://www.terraform.io/docs/providers/kubernetes/r/role_binding.html "Resource: Kubernetes Role Binding"):
     - `namespace-user`:
       - namespace: `[PROJECT]`
       - subjects:
