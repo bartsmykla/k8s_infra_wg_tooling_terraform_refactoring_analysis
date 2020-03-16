@@ -1,6 +1,6 @@
-- kubernetes_namespace:
+kubernetes_namespace:
   - [PROJECT]
-- kubernetes_role:
+kubernetes_role:
   - metadata:
       name: namespace-user
       namespace: [PROJECT]
@@ -96,7 +96,7 @@
         verbs:
           - get
           - list
-- kubernetes_role_binding:
+kubernetes_role_binding:
   - metadata:
     name: namespace-user
     namespace: [PROJECT]

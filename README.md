@@ -1041,9 +1041,9 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 ##### Yaml representation of *Namespaces Components*[<sup>G1</sup>](#global-reference)
 
 ```yaml
-- kubernetes_namespace:
+kubernetes_namespace:
   - [PROJECT]
-- kubernetes_role:
+kubernetes_role:
   - metadata:
       name: namespace-user
       namespace: [PROJECT]
@@ -1139,7 +1139,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
         verbs:
           - get
           - list
-- kubernetes_role_binding:
+kubernetes_role_binding:
   - metadata:
     name: namespace-user
     namespace: [PROJECT]
