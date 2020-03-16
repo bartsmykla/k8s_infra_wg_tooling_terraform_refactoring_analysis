@@ -46,13 +46,14 @@
     - [Namespaces](#namespaces)
       - [Namespaces `[PROJECTS]`](#namespaces-projects)
       - [Namespaces / Components](#namespaces--components)
-      - [Yaml representation of Namespaces Components](#yaml-representation-of-namespaces-components)
+      - [Yaml representation of Namespaces Components<sup>G1</sup>](#yaml-representation-of-namespaces-componentssupg1sup)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
   - [Why terraform?](#why-terraform)
   - [How can I help?](#how-can-i-help)
 - [todos](#todos)
+- [Global Reference](#global-reference)
 
 ---
 
@@ -974,7 +975,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
         - kind: `Role`
         - api_group: `rbac.authorization.k8s.io`
 
-##### Yaml representation of Namespaces Components
+##### Yaml representation of Namespaces Components[<sup>G1</sup>](#global-reference)
 
 ```yaml
 - kubernetes_namespace:
@@ -1105,3 +1106,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 - @listx:
   - > [[**todo(@listx)**]: I don't undestand why we first create dummy Cloud Run Service in `ensure-env-cip-auditor.sh` and then overwriting it in `cip-auditor/deploy.sh`. What stands behind the decision to do it that way? Can we eliminate the step for the dummy service?](#cip-auditor)
   - > [[**todo(@listx)**]: Do we really need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other than `k8s-artifacts-prod` projects too?](#cip-auditor-deploy)
+
+## Global Reference
+
+- <sup>G1</sup> The name of components and structure of Yaml was used in conjuction to terraform components
