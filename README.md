@@ -46,6 +46,7 @@
     - [Namespaces](#namespaces)
       - [Namespaces `[PROJECTS]`](#namespaces-projects)
       - [Namespaces / Components](#namespaces--components)
+      - [Yaml representation of Namespaces Components](#yaml-representation-of-namespaces-components)
 - [Proposed structure of new tooling](#proposed-structure-of-new-tooling)
 - [Plan of work](#plan-of-work)
 - [FAQ](#faq)
@@ -938,7 +939,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
             - `networkpolicies`
           - verbs:
             - `*`
-        - `networking.k8s.io"`:
+        - `networking.k8s.io`:
           - resources:
             - `networkpolicies`
           - verbs:
@@ -972,6 +973,120 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
         - name: `namespace-user`
         - kind: `Role`
         - api_group: `rbac.authorization.k8s.io`
+
+##### Yaml representation of Namespaces Components
+
+```yaml
+- kubernetes_namespace:
+  - [PROJECT]
+- kubernetes_role:
+  - metadata:
+      name: namespace-user
+      namespace: [PROJECT]
+    rules:
+      - api_groups:
+          - ""
+        resources:
+          - configmaps
+          - endpoints
+          - persistentvolumeclaims
+          - pods
+          - resourcequotas
+          - services
+        verbs:
+          - "*"
+      - api_groups:
+          - ""
+        resources:
+          - secrets
+        verbs:
+          - list
+      - api_groups:
+          - ""
+        resources:
+          - events
+        verbs:
+          - get
+          - list
+      - api_groups:
+          - certmanager.k8s.io
+        resources:
+          - certificates
+        verbs:
+          - "*"
+      - api_groups:
+          - coordination.k8s.io
+        resources:
+          - leases
+        verbs:
+          - "*"
+      - api_groups:
+          - batch
+        resources:
+          - cronjobs
+          - jobs
+        verbs:
+          - "*"
+      - api_groups:
+          - autoscaling
+        resources:
+          - horizontalpodautoscalers
+        verbs:
+          - "*"
+      - api_groups:
+          - apps
+        resources:
+          - deployments
+        verbs:
+          - "*"
+      - api_groups:
+          - extensions
+        resources:
+          - deployments
+          - ingresses
+          - networkpolicies
+        verbs:
+          - "*"
+      - api_groups:
+          - networking.k8s.io
+        resources:
+          - networkpolicies
+        verbs:
+          - "*"
+      - api_groups:
+          - storage.k8s.io
+        resources:
+          - storageclasses
+        verbs:
+          - list
+      - api_groups:
+          - scheduling.k8s.io
+        resources:
+          - priorityclasses
+        verbs:
+          - list
+      - api_groups:
+          - rbac.authorization.k8s.io
+        resources:
+          - clusterrolebindings
+          - clusterroles
+          - rolebindings
+          - roles
+        verbs:
+          - get
+          - list
+- kubernetes_role_binding:
+  - metadata:
+    name: namespace-user
+    namespace: [PROJECT]
+    subjects:
+      - name: k8s-infra-rbac-[PROJECT]@kubernetes.io
+        kind: Group
+    role_ref:
+      name: namespace-user
+      kind: Role
+      api_group: rbac.authorization.k8s.io
+```
 
 ---
 
