@@ -1,0 +1,18 @@
+google_project:
+  - name: k8s-releng-prod
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: k8s-releng-prod
+  - role: roles/cloudkms.admin
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: k8s-releng-prod
+  - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: k8s-releng-prod
+google_project_service:
+  - service: cloudkms.googleapis.com
+    project: k8s-gsuite

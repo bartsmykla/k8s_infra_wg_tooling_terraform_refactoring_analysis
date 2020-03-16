@@ -40,6 +40,8 @@
       - [Reference for Release Projects](#reference-for-release-projects)
     - [Releng](#releng)
       - [Releng / Components](#releng--components)
+      - [Terraform resources for Releng](#terraform-resources-for-releng)
+      - [Yaml representation of *Releng Components*<sup>G1</sup>](#yaml-representation-of-releng-componentssupg1sup)
     - [GSuite](#gsuite)
       - [Terraform resources for GSuite](#terraform-resources-for-gsuite)
       - [GSuite / Components](#gsuite--components)
@@ -853,6 +855,13 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ##### Releng / Components
 
+##### Terraform resources for Releng
+
+- Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
+  - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
+  - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
+  - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam_binding.html "Resource: Google Project IAM Binding")
+
 - **Components for project: `k8s-releng-prod`**:
   - Project:
     - `k8s-releng-prod`
@@ -865,6 +874,29 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
       - `group:k8s-infra-release-admins@kubernetes.io`
   - API:
     - `cloudkms`
+
+##### Yaml representation of *Releng Components*[<sup>G1</sup>](#global-reference)
+
+```yaml
+google_project:
+  - name: k8s-releng-prod
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: k8s-releng-prod
+  - role: roles/cloudkms.admin
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: k8s-releng-prod
+  - role: roles/cloudkms.cryptoKeyEncrypterDecrypter
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    project: k8s-releng-prod
+google_project_service:
+  - service: cloudkms.googleapis.com
+    project: k8s-gsuite
+```
 
 ---
 
