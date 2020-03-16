@@ -5,7 +5,7 @@
     project: k8s-gsuite
   - service: groupssettings.googleapis.com
     project: k8s-gsuite
-- service_account:
+- google_service_account:
   - account_id: gsuite-groups-manager
     display_name: Grants access to the googlegroups API in kubernetes.io GSuite
     project: k8s-gsuite
