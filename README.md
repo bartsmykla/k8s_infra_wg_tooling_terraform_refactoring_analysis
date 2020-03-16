@@ -41,12 +41,12 @@
     - [Releng](#releng)
       - [Releng / Components](#releng--components)
     - [GSuite](#gsuite)
-      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
+      - [Terraform resources for GSuite](#terraform-resources-for-gsuite)
       - [GSuite / Components](#gsuite--components)
       - [Yaml representation of *GSuite Components*<sup>G1</sup>](#yaml-representation-of-gsuite-componentssupg1sup)
       - [Reference for GSuite](#reference-for-gsuite)
     - [Namespaces](#namespaces)
-      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces-1)
+      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
       - [Namespaces `[PROJECTS]`](#namespaces-projects)
       - [Namespaces / Components](#namespaces--components)
       - [Yaml representation of *Namespaces Components*<sup>G1</sup>](#yaml-representation-of-namespaces-componentssupg1sup)
@@ -90,7 +90,11 @@ One could ask why this much effort to analyse all this components by hand and no
 
 What I don't like is there are places like CIP Auditor which need some scripts being run in a specified sequence for it to be able to correctly provision resources. We need to make it more atomic.
 
+---
+
 #### Main Project
+
+---
 
 ##### Components
 
@@ -160,6 +164,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 ---
 
 #### Prod Storage
+
+---
 
 ##### Prod Storage `[PROJECTS]`
 
@@ -417,6 +423,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 #### Prod Storage GCLB
 
+---
+
 ##### Prod Storage GCLB / Components
 
 - **Additional components for project: `k8s-artifacts-prod`**
@@ -511,6 +519,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 #### Staging Storage
 
+---
+
 ##### What components are needed for each `[PROJECT]`
 
 - Project `k8s-staging-[PROJECT]` ([ensure-staging-storage.***ensure_project***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L110) / [lib.ensure_project.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L81-L96)):
@@ -586,6 +596,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 #### Conformance Storage
 
+---
+
 ##### Conformance Storage `[BUCKETS]`
 
 - `capi-openstack`
@@ -619,6 +631,8 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 ---
 
 #### CIP Auditor
+
+---
 
 Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensure-env-cip-auditor.sh`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-env-cip-auditor.sh) and [`cip-auditor/deploy.sh`](ttps://github.com/kubernetes/k8s.io/blob/master/infra/gcp/cip-auditor/deploy.sh)) I decided to combine them into one section because I think we shouldn't split them.
 
@@ -753,6 +767,8 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 #### Release Projects
 
+---
+
 ##### Release Projects `[PROJECTS]`
 
 - `k8s-staging-release-test`
@@ -833,6 +849,8 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 #### Releng
 
+---
+
 ##### Releng / Components
 
 - **Components for project: `k8s-releng-prod`**:
@@ -852,7 +870,9 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 #### GSuite
 
-##### Terraform resources for Namespaces
+---
+
+##### Terraform resources for GSuite
 
 - Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
   - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
@@ -903,6 +923,8 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 ---
 
 #### Namespaces
+
+---
 
 ##### Terraform resources for Namespaces
 
