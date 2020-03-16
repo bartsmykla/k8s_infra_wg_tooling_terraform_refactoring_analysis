@@ -1,0 +1,17 @@
+google_cloud_run_service:
+  - name: cip-auditor
+    location: us-central1
+    template:
+      spec:
+        service_account_name: k8s-infra-gcr-auditor-invoker@[PROJECT].iam.gserviceaccount.com
+        containers:
+          - image: us.gcr.io/k8s-artifacts-prod/artifact-promoter/cip-auditor@sha256:[CIP_AUDITOR_DIGEST]
+            env:
+              - name: CIP_AUDIT_MANIFEST_REPO_URL
+                value: https://github.com/kubernetes/k8s.io
+              - name: CIP_AUDIT_MANIFEST_REPO_BRANCH
+                value: master
+              - name: CIP_AUDIT_MANIFEST_REPO_MANIFEST_DIR
+                value: k8s.gcr.io
+              - name: CIP_AUDIT_GCP_PROJECT_ID
+                value: k8s-artifacts-prod

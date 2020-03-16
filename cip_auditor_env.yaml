@@ -1,0 +1,36 @@
+google_project_service:
+  - service: serviceusage.googleapis.com
+    project: k8s-artifacts-prod
+  - service: cloudresourcemanager.googleapis.com
+    project: k8s-artifacts-prod
+  - service: stackdriver.googleapis.com
+    project: k8s-artifacts-prod
+  - service: clouderrorreporting.googleapis.com
+    project: k8s-artifacts-prod
+  - service: run.googleapis.com
+    project: k8s-artifacts-prod
+google_cloud_run_service:
+  - name: cip-auditor
+    location: us-central1
+    template:
+      spec:
+        service_account_name: k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com
+        containers:
+          - image: gcr.io/cloudrun/hello
+google_pubsub_topic:
+  - name: gcr
+google_pubsub_subscription:
+  - name: cip-auditor-invoker
+    topic: gcr
+    expiration_policy:
+      ttl: ""
+    push_config:
+      push_endpoint: [CLOUD_RUN_SERVICE.cip-auditor.ENDPOINT]
+    oidc_token:
+      service_account_email: k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com
+google_project_iam_binding:
+  - role: roles/iam.serviceAccountTokenCreator
+    members:
+      # Atribute: `[PROJECT_NUMBER]` will be taken from the project resource attributes reference
+      - serviceAccount:service-[PROJECT_NUMBER]@gcp-sa-pubsub.iam.gserviceaccount.com
+    project: k8s-artifacts-prod
