@@ -1041,6 +1041,7 @@ google_storage_bucket_acl:
   - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
   - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
   - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam_binding.html "Resource: Google Project IAM Binding")
+  - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam_member.html "Resource: Google Project IAM Member")[<sup>G2</sup>](#global-reference)
 
 - **Components for project: `k8s-releng-prod`**:
   - Project:
@@ -1091,6 +1092,7 @@ google_project_service:
   - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
   - [`google_service_account`](https://www.terraform.io/docs/providers/google/r/google_service_account.html "Resource: Google Service Account")
   - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam_binding.html "Resource: Google Project IAM Binding")
+  - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam_member.html "Resource: Google Project IAM Member")[<sup>G2</sup>](#global-reference)
 
 ##### GSuite / Components
 
