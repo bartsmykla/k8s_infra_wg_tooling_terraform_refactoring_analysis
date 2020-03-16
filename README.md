@@ -41,11 +41,12 @@
     - [Releng](#releng)
       - [Releng / Components](#releng--components)
     - [GSuite](#gsuite)
+      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
       - [GSuite / Components](#gsuite--components)
       - [Yaml representation of *GSuite Components*<sup>G1</sup>](#yaml-representation-of-gsuite-componentssupg1sup)
       - [Reference for GSuite](#reference-for-gsuite)
     - [Namespaces](#namespaces)
-      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces)
+      - [Terraform resources for Namespaces](#terraform-resources-for-namespaces-1)
       - [Namespaces `[PROJECTS]`](#namespaces-projects)
       - [Namespaces / Components](#namespaces--components)
       - [Yaml representation of *Namespaces Components*<sup>G1</sup>](#yaml-representation-of-namespaces-componentssupg1sup)
@@ -851,6 +852,14 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 #### GSuite
 
+##### Terraform resources for Namespaces
+
+- Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
+  - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
+  - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
+  - [`google_service_account`](https://www.terraform.io/docs/providers/google/r/google_service_account.html "Resource: Google Service Account")
+  - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam_binding.html "Resource: Google Project IAM Binding")
+
 ##### GSuite / Components
 
 - **Components for project: `k8s-gsuite`**[<sup>1</sup>](#reference-for-gsuite):
@@ -876,7 +885,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
     project: k8s-gsuite
   - service: groupssettings.googleapis.com
     project: k8s-gsuite
-- service_account:
+- google_service_account:
   - account_id: gsuite-groups-manager
     display_name: Grants access to the googlegroups API in kubernetes.io GSuite
     project: k8s-gsuite
