@@ -22,9 +22,9 @@
       - [Prod Storage GCLB / Components](#prod-storage-gclb--components)
       - [Reference for Prod Storage GCLB](#reference-for-prod-storage-gclb)
     - [Staging Storage](#staging-storage)
-      - [What components are needed for each `[PROJECT]`](#what-components-are-needed-for-each-project)
-      - [What components are needed for each of RELEASE_STAGING_PROJECTS `[RS_PROJECT]`](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
-      - [What components are needed for project: `k8s-staging-release-test`](#what-components-are-needed-for-project-k8s-staging-release-test)
+      - [Staging Storage `[PROJECTS]`](#staging-storage-projects)
+      - [Staging Storage `[RS_PROJECTS]`](#staging-storage-rs_projects)
+      - [Staging Storage / Components](#staging-storage--components)
     - [Conformance Storage](#conformance-storage)
       - [Terraform resources for Conformance Storage](#terraform-resources-for-conformance-storage)
       - [Conformance Storage `[BUCKETS]`](#conformance-storage-buckets)
@@ -532,76 +532,119 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 ---
 
-##### What components are needed for each `[PROJECT]`
+##### Staging Storage `[PROJECTS]`
 
-- Project `k8s-staging-[PROJECT]` ([ensure-staging-storage.***ensure_project***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L110) / [lib.ensure_project.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L81-L96)):
-  - organization: `758905017065` ([ensure-staging-storage.***ensure_project***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L110) / [lib.ensure_project.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L81-L84))
-  - billing_account: `018801-93540E-22A20E` ([ensure-staging-storage.***ensure_project***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L110) / [lib.ensure_project.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L98-L99))
-- IAM Policy Binding:
-  - `roles/viewer`:
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io` ([ensure-staging-storage.***empower_group_as_viewer***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L114) / [lib.empower_group_as_viewer.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L127-L130))
-    - `group:k8s-infra-artifact-admins@kubernetes.io` ([ensure-staging-storage.***empower_gcr_admins***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L128) / [lib.***empower_group_as_viewer***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L266) / [lib.empower_group_as_viewer.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L127-L130))
-  - `roles/cloudbuild.builds.editor`:
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io`
-  - `roles/serviceusage.serviceUsageConsumer`:
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io`
-  - `roles/cloudbuild.builds.builder`:
-    - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com`
-- GCR:
-  - `k8s-staging-[PROJECT]` ([ensure-staging-storage.***ensure_gcr_repo***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L124) / [lib_gcr.ensure_gcr_repo.**gcloud**](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib_gcr.sh#L69-L79))
-- IAM:
-  - `gs://artifacts.k8s-staging-[PROJECT].appspot.com`:
-    - `allUsers:objectViewer` ([ensure-staging-storage.***ensure_gcr_repo***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L124) / [lib_gcr.ensure_gcr_repo.***gsutil***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib_gcr.sh#L81))
-    - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
-    - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:objectAdmin`
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:legacyBucketReader`
-  - `gs://k8s-staging-[PROJECT]`:
-    - `allUsers:objectViewer`
-    - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
-    - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:objectAdmin`
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:legacyBucketReader`
-  - `gs://k8s-staging-[PROJECT]-gcb`:
-    - `allUsers:objectViewer`
-    - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
-    - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:objectAdmin`
-    - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:legacyBucketReader`
-    - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com:objectCreator`
-    - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com:objectViewer`
-- API:
-  - `containerregistry` ([ensure-staging-storage.***enable_api***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L120) / [lib.enable_api.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib.sh#L113))
-  - `storage-component`
-  - `cloudkms`
-  - `cloudbuild`
-- GCS Bucket:
-  - `gs://k8s-staging-[PROJECT]`:
-    - bucketpolicyonly: `true`
-    - location: `us`
-    - auto_deletion: `60 days`
-  - `gs://k8s-staging-[PROJECT]-gcb`:
-    - bucketpolicyonly: `true`
-    - location: `us`
-    - auto_deletion: `60 days`
-  - `gs://artifacts.k8s-staging-[PROJECT].appspot.com` ([ensure-staging-storage.***ensure_gcr_repo***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L124) / [lib_gcr.ensure_gcr_repo.***gcloud***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib_gcr.sh#L69-L79)):
-    - bucketpolicyonly: `true` ([ensure-staging-storage.***ensure_gcr_repo***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-staging-storage.sh#L124) / [lib_gcr.ensure_gcr_repo.***gsutil***](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/lib_gcr.sh#L82))
+- `apisnoop`
+- `artifact-promoter`
+- `build-image`
+- `cip-test`
+- `cluster-api`
+- `cluster-api-aws`
+- `cluster-api-azure`
+- `cluster-api-gcp`
+- `capi-openstack`
+- `capi-kubeadm`
+- `capi-docker`
+- `capi-vsphere`
+- `coredns`
+- `csi`
+- `descheduler`
+- `e2e-test-images`
+- `external-dns`
+- `kas-network-proxy`
+- `kops`
+- `kube-state-metrics`
+- `kubeadm`
+- `kubernetes`
+- `metrics-server`
+- `multitenancy`
+- `nfd`
+- `npd`
+- `provider-azure`
+- `publishing-bot`
+- `release-test`
+- `releng`
+- `scl-image-builder`
+- `service-apis`
+- `txtdirect`
 
-##### What components are needed for each of RELEASE_STAGING_PROJECTS `[RS_PROJECT]`
+##### Staging Storage `[RS_PROJECTS]`
 
-> [@bartsmykla: I think it's not consistent to put resources for release projects here, even if they are release ones. I think there should be created separate place for it]
+- `kubernetes`
+- `release-test`
+- `releng`
 
-- IAM Policy Binding:
-  - `roles/viewer`:
-    - `group:k8s-infra-release-viewers@kubernetes.io`
+##### Staging Storage / Components
 
-##### What components are needed for project: `k8s-staging-release-test`
+- **Components for [`[PROJECT]`](#staging-storage-projects)**:
+  - Project `k8s-staging-[PROJECT]`:
+    - organization: `758905017065`
+    - billing_account: `018801-93540E-22A20E`
+  - IAM Policy Binding:
+    - `roles/viewer`:
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io`
+      - `group:k8s-infra-artifact-admins@kubernetes.io`
+    - `roles/cloudbuild.builds.editor`:
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io`
+    - `roles/serviceusage.serviceUsageConsumer`:
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io`
+    - `roles/cloudbuild.builds.builder`:
+      - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com`
+  - GCR:
+    - `k8s-staging-[PROJECT]`
+  - IAM:
+    - `gs://artifacts.k8s-staging-[PROJECT].appspot.com`:
+      - `allUsers:objectViewer`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:legacyBucketReader`
+    - `gs://k8s-staging-[PROJECT]`:
+      - `allUsers:objectViewer`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:legacyBucketReader`
+    - `gs://k8s-staging-[PROJECT]-gcb`:
+      - `allUsers:objectViewer`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:objectAdmin`
+      - `group:k8s-infra-staging-[PROJECT]@kubernetes.io:legacyBucketReader`
+      - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com:objectCreator`
+      - `serviceAccount:deployer@k8s-prow.iam.gserviceaccount.com:objectViewer`
+  - API:
+    - `containerregistry`
+    - `storage-component`
+    - `cloudkms`
+    - `cloudbuild`
+  - GCS Bucket:
+    - `gs://k8s-staging-[PROJECT]`:
+      - bucketpolicyonly: `true`
+      - location: `us`
+      - auto_deletion: `60 days`
+    - `gs://k8s-staging-[PROJECT]-gcb`:
+      - bucketpolicyonly: `true`
+      - location: `us`
+      - auto_deletion: `60 days`
+    - `gs://artifacts.k8s-staging-[PROJECT].appspot.com`:
+      - bucketpolicyonly: `true`
 
-- IAM Policy Binding:
-  - `roles/cloudkms.admin`:
-    - `group:k8s-infra-release-admins@kubernetes.io`
-  - `roles/cloudkms.cryptoKeyEncrypterDecrypter`:
-    - `group:k8s-infra-release-admins@kubernetes.io`
+- **Components for [RELEASE_STAGING_PROJECTS `[RS_PROJECT]`](#staging-storage-rsprojects)**:
+
+  > [@bartsmykla: I think it's not consistent to put resources for release projects here, even if they are release ones. I think there should be created separate place for it]
+
+  - IAM Policy Binding:
+    - `roles/viewer`:
+      - `group:k8s-infra-release-viewers@kubernetes.io`
+
+- **Components for project: `k8s-staging-release-test`**:
+
+  - IAM Policy Binding:
+    - `roles/cloudkms.admin`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
+    - `roles/cloudkms.cryptoKeyEncrypterDecrypter`:
+      - `group:k8s-infra-release-admins@kubernetes.io`
 
 ---
 
