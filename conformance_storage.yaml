@@ -1,0 +1,53 @@
+# [BUCKETS]:
+#   - capi-openstack
+#   - cri-o
+#   - huaweicloud
+
+google_project:
+  - name: k8s-conform
+google_project_service:
+  - service: storage-component.googleapis.com
+    project: k8s-conform
+google_storage_bucket:
+  - name: k8s-confirm-[BUCKET]
+    bucket_policy_only: true
+    location: us
+    retention_policy:
+      retention_period: 315360000 # 10 years
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: k8s-conform
+google_storage_bucket_iam_binding:
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://k8s-confirm-[BUCKET]
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-conform-[BUCKET]@kubernetes.io
+    bucket: gs://k8s-confirm-[BUCKET]
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://k8s-confirm-[BUCKET]
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-conform-[BUCKET]@kubernetes.io
+    bucket: gs://k8s-confirm-[BUCKET]
+google_storage_bucket_acl:
+# we need to discuss if we wan't to manage this resource because as far I'm aware,
+# good practice is to use IAMs instead of ACLs, but in this case
+# ("legacyBucketOwner" and "legacyBucketReader") the ACLs will be implicitly
+# created, so I prefer to put them also here "explicitly".
+#
+# [IMPORTANT!] be aware that every role entity used in ACLs is in form
+#              of type and proper entity separated by "-" (not ":"),
+#              so for group "k8s-infra-release-admins@kubernetes.io"
+#              it will be "group-k8s-infra-release-admins@kubernetes.io"
+  - bucket: gs://k8s-confirm-[BUCKET]
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-conform-[BUCKET]@kubernetes.io

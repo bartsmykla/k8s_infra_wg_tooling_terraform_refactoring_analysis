@@ -135,7 +135,7 @@ google_storage_bucket_iam_binding:
     bucket: gs://[PROJECT]-gcb
 google_storage_bucket_acl:
 # we need to discuss if we wan't to manage this resource because as far I'm aware,
-#  good practice is to use IAMs instead of ACLs, but in this case
+# good practice is to use IAMs instead of ACLs, but in this case
 # ("legacyBucketOwner" and "legacyBucketReader") the ACLs will be implicitly
 # created, so I prefer to put them also here "explicitly".
 #

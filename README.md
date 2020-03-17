@@ -26,15 +26,17 @@
       - [What components are needed for each of RELEASE_STAGING_PROJECTS `[RS_PROJECT]`](#what-components-are-needed-for-each-of-release_staging_projects-rs_project)
       - [What components are needed for project: `k8s-staging-release-test`](#what-components-are-needed-for-project-k8s-staging-release-test)
     - [Conformance Storage](#conformance-storage)
+      - [Terraform resources for Conformance Storage](#terraform-resources-for-conformance-storage)
       - [Conformance Storage `[BUCKETS]`](#conformance-storage-buckets)
       - [Conformance Storage / Components](#conformance-storage--components)
+      - [Yaml representation of *Conformance Storage*<sup>G1</sup>,</sup>[<sup>G2</sup>](#global-reference)](#yaml-representation-of-conformance-storagesupg1supsupsupg2sup)
     - [CIP Auditor](#cip-auditor)
       - [CIP Auditor Env](#cip-auditor-env)
-        - [Terraform resources for RCIP Auditor Deploy](#terraform-resources-for-rcip-auditor-deploy)
+        - [Terraform resources for CIP Auditor Env](#terraform-resources-for-cip-auditor-env)
         - [CIP Auditor Env / Components](#cip-auditor-env--components)
-        - [Yaml representation of *CIP Auditor Env Components*<sup>G1</sup>](#yaml-representation-of-cip-auditor-env-componentssupg1sup)
+        - [Yaml representation of *CIP Auditor Env Components*<sup>G1</sup>,</sup>[<sup>G2</sup>](#global-reference)](#yaml-representation-of-cip-auditor-env-componentssupg1supsupsupg2sup)
       - [CIP Auditor Deploy](#cip-auditor-deploy)
-        - [Terraform resources for RCIP Auditor Deploy](#terraform-resources-for-rcip-auditor-deploy-1)
+        - [Terraform resources for CIP Auditor Deploy](#terraform-resources-for-cip-auditor-deploy)
         - [CIP Auditor Deploy / Components](#cip-auditor-deploy--components)
         - [Yaml representation of *CIP Auditor Deploy Components*<sup>G1</sup>](#yaml-representation-of-cip-auditor-deploy-componentssupg1sup)
       - [Reference for CIP Auditor](#reference-for-cip-auditor)
@@ -607,6 +609,18 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 ---
 
+##### Terraform resources for Conformance Storage
+
+- Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
+  - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
+  - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
+  - [`google_storage_bucket`](https://www.terraform.io/docs/providers/google/r/storage_bucket.html "Resource: Google Storage Bucket")
+  - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Binding")
+  - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_storage_bucket_iam_binding`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Binding")
+  - [`google_storage_bucket_iam_member`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_storage_bucket_acl`](https://www.terraform.io/docs/providers/google/r/storage_bucket_acl.html "Resource: Google Storage Bucket ACL")
+
 ##### Conformance Storage `[BUCKETS]`
 
 - `capi-openstack`
@@ -626,16 +640,74 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - bucketpolicyonly: `true`
         - location: `us`
         - retention: `10y`
-      - IAM:
-        - `gs://k8s-confirm-[BUCKET]`:
-          - `allUsers:objectViewer`
-          - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
-          - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
-          - `group:k8s-infra-conform-[BUCKET]@kubernetes.io:objectAdmin`
-          - `group:k8s-infra-conform-[BUCKET]@kubernetes.io:legacyBucketReader`
-      - IAM Policy Binding:
-        - `roles/viewer`:
-          - `group:k8s-infra-artifact-admins@kubernetes.io`
+    - IAM:
+      - `gs://k8s-confirm-[BUCKET]`:
+        - `allUsers:objectViewer`
+        - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
+        - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
+        - `group:k8s-infra-conform-[BUCKET]@kubernetes.io:objectAdmin`
+        - `group:k8s-infra-conform-[BUCKET]@kubernetes.io:legacyBucketReader`
+    - IAM Policy Binding:
+      - `roles/viewer`:
+        - `group:k8s-infra-artifact-admins@kubernetes.io`
+
+##### Yaml representation of *Conformance Storage*[<sup>G1</sup>](#global-reference),</sup>[<sup>G2</sup>](#global-reference)
+
+```yaml
+# [BUCKETS]:
+#   - capi-openstack
+#   - cri-o
+#   - huaweicloud
+
+google_project:
+  - name: k8s-conform
+google_project_service:
+  - service: storage-component.googleapis.com
+    project: k8s-conform
+google_storage_bucket:
+  - name: k8s-confirm-[BUCKET]
+    bucket_policy_only: true
+    location: us
+    retention_policy:
+      retention_period: 315360000 # 10 years
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: k8s-conform
+google_storage_bucket_iam_binding:
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://k8s-confirm-[BUCKET]
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-conform-[BUCKET]@kubernetes.io
+    bucket: gs://k8s-confirm-[BUCKET]
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-release-admins@kubernetes.io
+    bucket: gs://k8s-confirm-[BUCKET]
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-conform-[BUCKET]@kubernetes.io
+    bucket: gs://k8s-confirm-[BUCKET]
+google_storage_bucket_acl:
+# we need to discuss if we wan't to manage this resource because as far I'm aware,
+# good practice is to use IAMs instead of ACLs, but in this case
+# ("legacyBucketOwner" and "legacyBucketReader") the ACLs will be implicitly
+# created, so I prefer to put them also here "explicitly".
+#
+# [IMPORTANT!] be aware that every role entity used in ACLs is in form
+#              of type and proper entity separated by "-" (not ":"),
+#              so for group "k8s-infra-release-admins@kubernetes.io"
+#              it will be "group-k8s-infra-release-admins@kubernetes.io"
+  - bucket: gs://k8s-confirm-[BUCKET]
+    role_entity:
+      - OWNER:group-k8s-infra-release-admins@kubernetes.io
+      - READER:group-k8s-infra-conform-[BUCKET]@kubernetes.io
+```
 
 ---
 
@@ -649,7 +721,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
 
 ##### CIP Auditor Env
 
-###### Terraform resources for RCIP Auditor Deploy
+###### Terraform resources for CIP Auditor Env
 
 - Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
   - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
@@ -691,7 +763,7 @@ Even if there are two scripts for CIP (Container Image Promoter) Auditor ([`ensu
       - push_endpoint: `[CLOUD_RUN_SERVICE.cip-auditor.ENDPOINT]`
       - push_auth_service_account: `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`[<sup>2</sup>](#reference-for-cip-auditor)
 
-###### Yaml representation of *CIP Auditor Env Components*[<sup>G1</sup>](#global-reference)
+###### Yaml representation of *CIP Auditor Env Components*[<sup>G1</sup>](#global-reference),</sup>[<sup>G2</sup>](#global-reference)
 
 ```yaml
 google_project_service:
@@ -736,7 +808,7 @@ google_project_iam_binding:
 
 > [**todo(@listx)**]: Do we need the `[PROJECT]` to be a variable? Is CIP Auditor currently deployed for other than `k8s-artifacts-prod` projects too?
 
-###### Terraform resources for RCIP Auditor Deploy
+###### Terraform resources for CIP Auditor Deploy
 
 - Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
   - [`google_cloud_run_service`](https://www.terraform.io/docs/providers/google/r/cloud_run_service.html "Resource: Google Cloud Run Service")
@@ -1080,7 +1152,7 @@ google_storage_bucket_iam_binding:
     bucket: gs://[PROJECT]-gcb
 google_storage_bucket_acl:
 # we need to discuss if we wan't to manage this resource because as far I'm aware,
-#  good practice is to use IAMs instead of ACLs, but in this case
+# good practice is to use IAMs instead of ACLs, but in this case
 # ("legacyBucketOwner" and "legacyBucketReader") the ACLs will be implicitly
 # created, so I prefer to put them also here "explicitly".
 #
