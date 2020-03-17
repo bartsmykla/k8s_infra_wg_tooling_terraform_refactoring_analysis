@@ -13,9 +13,11 @@
     - [Main Project](#main-project)
       - [Components](#components)
     - [Prod Storage](#prod-storage)
+      - [Terraform resources for Prod Storage](#terraform-resources-for-prod-storage)
       - [Prod Storage `[PROJECTS]`](#prod-storage-projects)
       - [Prod Storage `[REGIONS]`](#prod-storage-regions)
       - [Prod Storage / Components](#prod-storage--components)
+      - [Yaml representation of *Prod Storage*<sup>G1</sup><sup>,</sup>[<sup>G2</sup>](#global-reference)](#yaml-representation-of-prod-storagesupg1supsupsupsupg2sup)
       - [Notes for Prod Storage](#notes-for-prod-storage)
       - [Reference for Prod Storage](#reference-for-prod-storage)
     - [Prod Storage GCLB](#prod-storage-gclb)
@@ -24,7 +26,7 @@
       - [Yaml representation of *Prod Storage GCLB*<sup>G1</sup>](#yaml-representation-of-prod-storage-gclbsupg1sup)
       - [Reference for Prod Storage GCLB](#reference-for-prod-storage-gclb)
     - [Staging Storage](#staging-storage)
-      - [Terraform resources for Staging Projects](#terraform-resources-for-staging-projects)
+      - [Terraform resources for Staging Storage](#terraform-resources-for-staging-storage)
       - [Staging Storage `[PROJECTS]`](#staging-storage-projects)
       - [Staging Storage `[RS_PROJECTS]`](#staging-storage-rs_projects)
       - [Staging Storage / Components](#staging-storage--components)
@@ -181,6 +183,24 @@ What I don't like is there are places like CIP Auditor which need some scripts b
 
 ---
 
+##### Terraform resources for Prod Storage
+
+- Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
+  - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
+  - [`google_project_service`](https://www.terraform.io/docs/providers/google/r/google_project_service.html "Resource: Google Project Service")
+  - [`google_container_registry`](https://www.terraform.io/docs/providers/google/r/container_registry.html "Resource: Google Container Registry")
+  - [`google_storage_bucket`](https://www.terraform.io/docs/providers/google/r/storage_bucket.html "Resource: Google Storage Bucket")
+  - [`google_service_account`](https://www.terraform.io/docs/providers/google/r/google_service_account.html "Resource: Google Service Account")
+  - [`google_storage_bucket_object`](https://www.terraform.io/docs/providers/google/r/storage_bucket_object.html "Resource: Google Storage Bucket Object")
+  - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Binding")
+  - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_storage_bucket_iam_binding`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Binding")
+  - [`google_storage_bucket_iam_member`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_service_account_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_service_account_iam.html "Resource: Google Service Account IAM Binding")
+  - [`google_service_account_iam_member`](https://www.terraform.io/docs/providers/google/r/google_service_account_iam.html "Resource: Google Service Account IAM Member")[<sup>G2</sup>](#global-reference)
+  - [`google_cloud_run_service_iam_binding`](https://www.terraform.io/docs/providers/google/r/cloud_run_service_iam.html "Resource: Google Cloud Run Service IAM Binding")
+  - [`google_cloud_run_service_iam_member`](https://www.terraform.io/docs/providers/google/r/cloud_run_service_iam.html "Resource: Google Cloud Run Service IAM Member")[<sup>G2</sup>](#global-reference)
+  
 ##### Prod Storage `[PROJECTS]`
 
 - `k8s-artifacts-prod`
@@ -263,9 +283,9 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `roles/serviceusage.serviceUsageConsumer`[<sup>10</sup>](#reference-for-prod-storage "Special case"):
       - `group:k8s-infra-artifact-admins@kubernetes.io`
     - `roles/logging.logWriter`[<sup>11</sup>](#reference-for-prod-storage "Special case"):
-      - `k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`
+      - `serviceAccount:k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`
     - `roles/errorreporting.writer`[<sup>11</sup>](#reference-for-prod-storage "Special case"):
-      - `k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`
+      - `serviceAccount:k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`
   - IAM Policy Binding for Service Account[<sup>10</sup>](#reference-for-prod-storage "Special case"):
     - `k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`:
       - role: `roles/iam.serviceAccountUser`
@@ -284,7 +304,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com`
       - role: `roles/run.invoker`
       - platform: `managed`
-      - preojct: `k8s-artifacts-prod`
+      - project: `k8s-artifacts-prod`
       - region: `us-central1`
 
   - **Components per `[FILE]` in `[MODULE_PATH]/static/prod-storage` directory**[<sup>3</sup>](#reference-for-prod-storage "Special case")<sup>,</sup>[<sup>4</sup>](#reference-for-prod-storage "Example of how to achieve it with Terraform"):
@@ -298,9 +318,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
   
-  - **Components for project: `k8s-cip-test-prod` per [[REGION]](#prod-storage-regions)**:
-    - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-cip-test-prod.appspot.com`
+  - **Components for project: `k8s-cip-test-prod` per [`[REGION]`](#prod-storage-regions)**:
     - IAM:
       - `gs://[REGION].artifacts.k8s-cip-test-prod.appspot.com`:
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
@@ -316,8 +334,6 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-cip-test-prod.iam.gserviceaccount.com:legacyBucketOwner`
 
   - **Components for project: `k8s-staging-cip-test` per [`[REGION]`](#prod-storage-regions)**:
-    - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-staging-cip-test.appspot.com`
     - IAM:
       - `gs://[REGION].artifacts.k8s-staging-cip-test.appspot.com`:
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
@@ -328,9 +344,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
   
-  - **Components for project: `k8s-gcr-backup-test-prod` per [[REGION]](#prod-storage-regions)**:
-    - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-gcr-backup-test-prod.appspot.com`
+  - **Components for project: `k8s-gcr-backup-test-prod` per [`[REGION]`](#prod-storage-regions)**:
     - IAM:
       - `gs://[REGION].artifacts.k8s-gcr-backup-test-prod.appspot.com`:
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
@@ -341,9 +355,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `roles/viewer`:
       - `group:k8s-infra-staging-cip-test@kubernetes.io`
   
-  - **Components for project: `k8s-gcr-backup-test-prod-bak` per [[REGION]](#prod-storage-regions)**:
-    - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-gcr-backup-test-prod-bak.appspot.com`
+  - **Components for project: `k8s-gcr-backup-test-prod-bak` per [`[REGION]`](#prod-storage-regions)**:
     - IAM:
       - `gs://[REGION].artifacts.k8s-gcr-backup-test-prod-bak.appspot.com`:
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
@@ -368,9 +380,7 @@ What I don't like is there are places like CIP Auditor which need some scripts b
     - `roles/storage.admin`[<sup>7</sup>](#reference-for-prod-storage "Special case")
       - `serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com`
   
-  - **Components for project: `k8s-gcr-audit-test-prod` per [[REGION]](#prod-storage-regions)**:
-    - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-gcr-audit-test-prod.appspot.com`
+  - **Components for project: `k8s-gcr-audit-test-prod` per [`[REGION]`](#prod-storage-regions)**:
     - IAM:
       - `gs://[REGION].artifacts.k8s-gcr-audit-test-prod.appspot.com`:
         - `group:k8s-infra-staging-cip-test@kubernetes.io:objectAdmin`
@@ -387,8 +397,6 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - `serviceAccount:615281671549@cloudbuild.gserviceaccount.com:legacyBucketReader`
   
   - **Components for project: `k8s-release-test-prod` per [`[REGION]`](#prod-storage-regions)**:
-    - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-release-test-prod.appspot.com`
     - IAM:
       - `gs://[REGION].artifacts.k8s-release-test-prod.appspot.com`:
         - `group:k8s-infra-staging-kubernetes@kubernetes.io:objectAdmin`
@@ -396,7 +404,298 @@ What I don't like is there are places like CIP Auditor which need some scripts b
         - `group:k8s-infra-staging-release-test@kubernetes.io:objectAdmin`
         - `group:k8s-infra-staging-release-test@kubernetes.io:legacyBucketOwner`
 
----
+##### Yaml representation of *Prod Storage*[<sup>G1</sup>](#global-reference)<sup>,</sup>[<sup>G2</sup>](#global-reference)
+
+```yaml
+# [PROJECTS]
+#   - k8s-artifacts-prod
+#   - k8s-artifacts-prod-bak
+#   - k8s-cip-test-prod
+#   - k8s-staging-cip-test
+#   - k8s-gcr-backup-test-prod
+#   - k8s-gcr-backup-test-prod-bak
+#   - k8s-gcr-audit-test-prod
+#   - k8s-release-test-prod
+#
+# [REGIONS]
+#
+#   - us
+#   - eu
+#   - asia
+
+google_project:
+  - name: "[PROJECT]"
+google_project_service:
+  - service: containerregistry.googleapis.com
+    project: "[PROJECT]"
+  - service: containeranalysis.googleapis.com
+    project: "[PROJECT]"
+  - service: storage-component.googleapis.com
+    project: "[PROJECT]"
+google_container_registry:
+  project: "[REGION]_[PROJECT]"
+google_storage_bucket:
+  - name: "[PROJECT]"
+    bucket_policy_only: true
+    location: us
+    retention_policy:
+      retention_period: 315360000 # 10 years
+  - name: "[REGION].artifacts.k8s-staging-[PROJECT].appspot.com"
+    bucket_policy_only: true
+  # START: Additional components for project: "k8s-artifacts-prod"
+  - name: k8s-artifacts-prod
+    website:
+      main_page_suffix: index.html
+    project: k8s-artifacts-prod
+  - name: k8s-artifacts-cni
+    location: us
+    bucket_policy_only: true
+    retention_policy:
+      retention_period: 315360000 # 10 years
+    project: k8s-artifacts-prod
+  # END
+google_project_iam_binding:
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: "[PROJECT]"
+  # START: Additional components for project: "k8s-artifacts-prod"
+  - role: roles/run.admin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: k8s-artifacts-prod
+  - role: roles/serviceusage.serviceUsageConsumer
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    project: k8s-artifacts-prod
+  - role: roles/logging.logWriter
+    members:
+      - serviceAccount:k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com
+    project: k8s-artifacts-prod
+  - role: roles/errorreporting.writer
+    members:
+      - serviceAccount:k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com
+    project: k8s-artifacts-prod
+  # END
+  # START: Additional components for project: "k8s-cip-test-prod"
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    project: k8s-cip-test-prod
+  # END
+  # START: Additional components for project: "k8s-staging-cip-test"
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    project: k8s-staging-cip-test
+  # END
+  # START: Additional components for project: "k8s-gcr-backup-test-prod"
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    project: k8s-gcr-backup-test-prod
+  # END
+  # START: Additional components for project: "k8s-gcr-backup-test-prod-bak"
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    project: k8s-gcr-backup-test-prod-bak
+  # END
+  # START: Additional components for project: "k8s-gcr-audit-test-prod"
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    project: k8s-gcr-audit-test-prod
+  - role: roles/errorreporting.admin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  - role: roles/logging.admin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  - role: roles/pubsub.admin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  - role: roles/resourcemanager.projectIamAdmin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  - role: roles/run.admin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  - role: roles/serverless.serviceAgent
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  - role: roles/storage.admin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-gcr-audit-test-prod.iam.gserviceaccount.com
+    project: k8s-gcr-audit-test-prod
+  # END
+  # START: Additional components for project: "k8s-release-test-prod"
+  - role: roles/viewer
+    members:
+      - group:k8s-infra-staging-kubernetes@kubernetes.io
+      - group:k8s-infra-staging-release-test@kubernetes.io
+    project: k8s-release-test-prod
+  # END
+# START: Additional components for project: "k8s-artifacts-prod"
+google_service_account:
+  - account_id: k8s-infra-gcr-auditor
+    display_name: k8s-infra container image auditor
+    project: k8s-artifacts-prod
+  - account_id: k8s-infra-gcr-auditor-invoker
+    display_name: k8s-infra container image auditor invoker
+    project: k8s-artifacts-prod
+google_service_account_iam_binding:
+  - service_account_id: k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com
+    role: roles/iam.serviceAccountUser
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+google_cloud_run_service_iam_binding:
+  service_name: cip-auditor
+  role: roles/run.invoker
+  members:
+    - serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com
+  location: us-central1
+  project: k8s-artifacts-prod
+google_storage_bucket_object:
+# We'll be copying all static files from "static/prod-storage"
+  - name: "[NAME]"
+    source: "[MODULE_PATH]/static/prod-storage/[FILE]"
+    bucket: gs://k8s-artifacts-prod
+# END
+google_storage_bucket_iam_binding:
+  # gs://[PROJECT]
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://[PROJECT]
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    bucket: gs://[PROJECT]
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    bucket: gs://[PROJECT]
+  # gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - serviceAccount:k8s-infra-gcr-promoter@[PROJECT].iam.gserviceaccount.com
+    bucket: gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - serviceAccount:k8s-infra-gcr-promoter@[PROJECT].iam.gserviceaccount.com
+    bucket: gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+  # gs://k8s-artifacts-cni
+  # START: Additional components for project: "k8s-artifacts-prod"
+  - role: roles/storage.objectViewer
+    members:
+      - allUsers
+    bucket: gs://k8s-artifacts-cni
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+      - group:k8s-infra-push-cni@kubernetes.io
+    bucket: gs://k8s-artifacts-cni
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-artifact-admins@kubernetes.io
+    bucket: gs://k8s-artifacts-cni
+  - role: roles/storage.legacyBucketReader
+    members:
+      - group:k8s-infra-push-cni@kubernetes.io
+    bucket: gs://k8s-artifacts-cni
+  # END
+  # START: Additional components for project: "k8s-cip-test-prod"
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-cip-test-prod.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-cip-test-prod.appspot.com
+  # END
+  # START: Additional components for project: "k8s-staging-cip-test"
+  - role: roles/storage.objectAdmin
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-cip-test-prod.iam.gserviceaccount.com
+    bucket: gs://artifacts.k8s-staging-cip-test.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - serviceAccount:k8s-infra-gcr-promoter@k8s-cip-test-prod.iam.gserviceaccount.com
+    bucket: gs://artifacts.k8s-staging-cip-test.appspot.com
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-staging-cip-test.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-staging-cip-test.appspot.com
+  # END
+  # START: Additional components for project: "k8s-gcr-backup-test-prod"
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-gcr-backup-test-prod.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-gcr-backup-test-prod.appspot.com
+  # END
+  # START: Additional components for project: "k8s-gcr-backup-test-prod-bak"
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-gcr-backup-test-prod-bak.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-gcr-backup-test-prod-bak.appspot.com
+  # END
+  # START: Additional components for project: "k8s-gcr-audit-test-prod"
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-gcr-audit-test-prod.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-staging-cip-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-gcr-audit-test-prod.appspot.com
+  # END
+  # START: Additional components for project: "k8s-release-test-prod"
+  - role: roles/storage.objectAdmin
+    members:
+      - serviceAccount:615281671549@cloudbuild.gserviceaccount.com
+    bucket: gs://k8s-release-test-prod
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - serviceAccount:615281671549@cloudbuild.gserviceaccount.com
+    bucket: gs://k8s-release-test-prod
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-staging-kubernetes@kubernetes.io
+      - group:k8s-infra-staging-release-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-release-test-prod.appspot.com
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-staging-kubernetes@kubernetes.io
+      - group:k8s-infra-staging-release-test@kubernetes.io
+    bucket: gs://[REGION].artifacts.k8s-release-test-prod.appspot.com
+  # END
+```
 
 ##### Notes for Prod Storage
 
@@ -486,12 +785,12 @@ What I don't like is there are places like CIP Auditor which need some scripts b
       - target_http_proxy: `k8s-artifacts-prod`
       - ports:
         - `80`
-      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#reference-for-prod-storage-gclb) "Example how to get [GLOBAL_ADDRESS] using terraform")
+      - ip_address: `[GLOBAL_ADDRESS]`[<sup>1</sup>](#reference-for-prod-storage-gclb "Example how to get [GLOBAL_ADDRESS] using terraform")
     - `k8s-artifacts-prod-https`:
       - target_https_proxy: `k8s-artifacts-prod`
       - ports:
         - `443`
-      - ip_address: [GLOBAL_ADDRESS][<sup>1</sup>](#reference-for-prod-storage-gclb) "Example how to get [GLOBAL_ADDRESS] using terraform")
+      - ip_address: `[GLOBAL_ADDRESS]`[<sup>1</sup>](#reference-for-prod-storage-gclb "Example how to get [GLOBAL_ADDRESS] using terraform")
 
 ##### Yaml representation of *Prod Storage GCLB*[<sup>G1</sup>](#global-reference)
 
@@ -611,7 +910,7 @@ google_compute_global_forwarding_rule:
 
 ---
 
-##### Terraform resources for Staging Projects
+##### Terraform resources for Staging Storage
 
 - Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
   - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
