@@ -1,0 +1,57 @@
+google_project:
+  - name: k8s-artifacts-prod
+google_project_service:
+  - service: compute.googleapis.com
+    project: k8s-artifacts-prod
+google_compute_global_address:
+  - name: k8s-artifacts-prod
+    description: IP Address for GCLB for binary artifacts
+    project: k8s-artifacts-prod
+google_compute_backend_bucket:
+  - name: k8s-artifacts-prod
+    bucket_name: k8s-artifacts-prod
+    project: k8s-artifacts-prod
+google_compute_url_map:
+# API describes "default_service" as a string with url to backend_service:
+# https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps
+# but terraform documentation says you can put here the name of a bucket too
+# https://www.terraform.io/docs/providers/google/r/compute_url_map.html
+# and also in our scripts we are using bucket --default-backend-bucket flag
+# https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage-gclb.sh#L71-L73
+#
+# [todo(@bartsmykla)]: confirm that it's fine to use it that way
+  - name: k8s-artifacts-prod
+    default_service: k8s-artifacts-prod
+    project: k8s-artifacts-prod
+google_compute_managed_ssl_certificate:
+# [Warning!]: This resource is in beta, and should be used 
+# with the terraform-provider-google-beta provider
+# https://www.terraform.io/docs/providers/google/r/compute_managed_ssl_certificate.html
+  - name: k8s-artifacts-prod
+    provider: google-beta
+    managed:
+      domains:
+        - artifacts.k8s.io
+    project: k8s-artifacts-prod
+google_compute_target_http_proxy:
+  - name: k8s-artifacts-prod
+    url_map: k8s-artifacts-prod
+    project: k8s-artifacts-prod
+google_compute_target_https_proxy:
+  - name: k8s-artifacts-prod
+    url_map: k8s-artifacts-prod
+    ssl_certificates:
+      - k8s-artifacts-prod
+    project: k8s-artifacts-prod
+google_compute_global_forwarding_rule:
+# [GLOBAL_ADDRESS] will be taken from resource: "google_compute_global_address" attribute reference
+  - name: k8s-artifacts-prod-http
+    target: k8s-artifacts-prod
+    ports:
+      - 80
+    ip_address: [GLOBAL_ADDRESS]
+  - name: k8s-artifacts-prod-https
+    target: k8s-artifacts-prod
+    ports:
+      - 443
+    ip_address: [GLOBAL_ADDRESS]
