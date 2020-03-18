@@ -33,9 +33,9 @@ Analyzed script: [namespaces/ensure-namespaces.sh](https://github.com/kubernetes
 ## Components
 
 - **Components per [[PROJECT]](#projects)**:
-  - [Kubernetes Namespace](https://www.terraform.io/docs/providers/kubernetes/r/namespace.html "Resource: Kubernetes Namespace"):
+  - Kubernetes Namespace:
     - `[PROJECT]`
-  - [Kubernetes Role](https://www.terraform.io/docs/providers/kubernetes/r/role.html "Resource: Kubernetes Role"):
+  - Kubernetes Role:
     - `namespace-user`:
       - namespace: `[PROJECT]`
       - rules:
@@ -117,7 +117,7 @@ Analyzed script: [namespaces/ensure-namespaces.sh](https://github.com/kubernetes
           - verbs:
             - `get`
             - `list`
-  - [Kubernetes Role Binding](https://www.terraform.io/docs/providers/kubernetes/r/role_binding.html "Resource: Kubernetes Role Binding"):
+  - Kubernetes Role Binding:
     - `namespace-user`:
       - namespace: `[PROJECT]`
       - subjects:
