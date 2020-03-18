@@ -9,6 +9,8 @@ Analyzed script: [ensure-staging-storage.sh](https://github.com/kubernetes/k8s.i
 - [Flow Chart](#flow-chart)
 - [Terraform resources](#terraform-resources)
 - [Variables used in Components](#variables-used-in-components)
+  - [`[PROJECTS]`](#projects)
+  - [`[RS_PROJECTS]`:](#rs_projects)
 - [Components](#components)
 - [Yaml representation of Components](#yaml-representation-of-componentsg1g2)
 
@@ -69,7 +71,7 @@ Analyzed script: [ensure-staging-storage.sh](https://github.com/kubernetes/k8s.i
 - `service-apis`
 - `txtdirect`
 
-### `[RS_PROJECTS]`:
+### `[RS_PROJECTS]`
 
 - `kubernetes`
 - `release-test`
