@@ -277,7 +277,7 @@ google_storage_bucket:
     location: us
     retention_policy:
       retention_period: 315360000 # 10 years
-  - name: "[REGION].artifacts.k8s-staging-[PROJECT].appspot.com"
+  - name: "[REGION].artifacts.[PROJECT].appspot.com"
     bucket_policy_only: true
   # START: Additional components for project: "k8s-artifacts-prod"
   - name: k8s-artifacts-prod
@@ -419,21 +419,21 @@ google_storage_bucket_iam_binding:
     members:
       - group:k8s-infra-artifact-admins@kubernetes.io
     bucket: gs://[PROJECT]
-  # gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+  # gs://[REGION].artifacts.[PROJECT].appspot.com
   - role: roles/storage.objectViewer
     members:
       - allUsers
-    bucket: gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+    bucket: gs://[REGION].artifacts.[PROJECT].appspot.com
   - role: roles/storage.objectAdmin
     members:
       - group:k8s-infra-artifact-admins@kubernetes.io
       - serviceAccount:k8s-infra-gcr-promoter@[PROJECT].iam.gserviceaccount.com
-    bucket: gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+    bucket: gs://[REGION].artifacts.[PROJECT].appspot.com
   - role: roles/storage.legacyBucketOwner
     members:
       - group:k8s-infra-artifact-admins@kubernetes.io
       - serviceAccount:k8s-infra-gcr-promoter@[PROJECT].iam.gserviceaccount.com
-    bucket: gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com
+    bucket: gs://[REGION].artifacts.[PROJECT].appspot.com
   # gs://k8s-artifacts-cni
   # START: Additional components for project: "k8s-artifacts-prod"
   - role: roles/storage.objectViewer
@@ -570,6 +570,38 @@ google_storage_bucket_iam_binding:
 - <sup>11</sup> [Special case: `ensure-prod-storage.sh#L219`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage.sh#L219)
 - <sup>12</sup>[**todo(@bartsmykla)**]: When doing analysis of CIP Auditor scripts I found that [IAMs for `k8s-gcr-audit-test-prod`](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/audit/projects/k8s-gcr-audit-test-prod/iam.json) doesn't match exactly with those assigned by our scripts. I need to compare them more precisely
 
+## IAMs analysis
+
+### Legend
+
+| Icon | Description                                                                                                                          |
+|:----:|:-------------------------------------------------------------------------------------------------------------------------------------|
+|  🔴  | Assigning the IAM not found in any script from [`k/k8s.io/infra/gcp/`][L1]                                                           |
+|  🟠  | Not found direct assigning of the IAM, but it was **probably** assigned implicitly (links should be provided to show by who or what) |
+|  🟢  | Assigning the IAM found in one of the scripts                                                                                        |
+
+### [`k8s-artifacts-prod`](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/audit/projects/k8s-artifacts-prod/iam.json)
+
+| Status | Role                                   | Member                                                                                    | Description                   |
+|:------:|:---------------------------------------|:------------------------------------------------------------------------------------------|:------------------------------|
+|        | `roles/compute.serviceAgent`           | `serviceAccount:service-388270116193@compute-system.iam.gserviceaccount.com`              |                               |
+|        | `roles/containeranalysis.ServiceAgent` | `serviceAccount:service-388270116193@container-analysis.iam.gserviceaccount.com`          |                               |
+|        | `roles/containerscanning.ServiceAgent` | `serviceAccount:service-388270116193@gcp-sa-containerscanning.iam.gserviceaccount.com`    |                               |
+|        | `roles/editor`                         | `serviceAccount:388270116193-compute@developer.gserviceaccount.com`                       |                               |
+|        | `roles/editor`                         | `serviceAccount:388270116193@cloudservices.gserviceaccount.com`                           |                               |
+|        | `roles/editor`                         | `serviceAccount:service-388270116193@containerregistry.iam.gserviceaccount.com`           |                               |
+|   🔴   | `roles/editor`                         | `user:justinsb@google.com`                                                                |                               |
+|        | `roles/errorreporting.writer`          | `serviceAccount:k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`         |                               |
+|        | `roles/logging.logWriter`              | `serviceAccount:k8s-infra-gcr-auditor@k8s-artifacts-prod.iam.gserviceaccount.com`         |                               |
+|   🔴   | `roles/owner`                          | `user:thockin@google.com`                                                                 |                               |
+|        | `roles/run.admin`                      | `group:k8s-infra-artifact-admins@kubernetes.io`                                           |                               |
+|        | `roles/run.invoker`                    | `serviceAccount:k8s-infra-gcr-auditor-invoker@k8s-artifacts-prod.iam.gserviceaccount.com` |                               |
+|        | `roles/run.serviceAgent`               | `serviceAccount:service-388270116193@serverless-robot-prod.iam.gserviceaccount.com`       |                               |
+|   🟢   | `roles/viewer`                         | `group:k8s-infra-artifact-admins@kubernetes.io`                                           | [`ensure-prod-storage.sh`][1] |
+
+[L1]: https://github.com/kubernetes/k8s.io/tree/e62c18e79a75615d4868afaf5eebcf36bb265df9/infra/gcp
+[1]: https://github.com/kubernetes/k8s.io/blob/8e69cb5b6fea5ce4f8f9dd1f158ef4b5236de2e6/infra/gcp/ensure-prod-storage.sh#L117
+
 ## Questions & Doubts
 
 - When I'm looking at bucket: [`gs://k8s-artifacts-prod`](https://console.cloud.google.com/storage/browser/k8s-artifacts-prod?forceOnBucketsSortingFiltering=false&authuser=0&folder=true&organizationId=true&project=k8s-artifacts-prod) the only things I see here are file: [index.html](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/infra/gcp/static/prod-storage/index.html) and directory: [`binaries/kops`](https://console.cloud.google.com/storage/browser/k8s-artifacts-prod/binaries/kops/?forceOnBucketsSortingFiltering=false&authuser=0&folder=true&organizationId=true&project=k8s-artifacts-prod)
@@ -580,3 +612,13 @@ google_storage_bucket_iam_binding:
   - What is the purpose of the bucket?
   - Why it's empty?
   - What is the process of pushing to that bucket?
+- [cc. @listx] What is the purpose of [fake_prod test projects](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/infra/gcp/ensure-prod-storage.sh#L162-L178)?
+  - Looking at [`gs://k8s-cip-test-prod`](https://console.cloud.google.com/storage/browser/k8s-cip-test-prod?project=k8s-cip-test-prod&authuser=0&folder=true&organizationId=true) there is a bunch of binary files which are more than 6 months old
+    - Are we using this bucket?
+    - Who/What and when is pushing to this bucket?
+  - [`gs://k8s-gcr-backup-test-prod`](https://console.cloud.google.com/storage/browser/k8s-gcr-backup-test-prod?project=k8s-gcr-backup-test-prod&authuser=0&folder=true&organizationId=true), [`gs://k8s-gcr-backup-test-prod-bak`](https://console.cloud.google.com/storage/browser/k8s-gcr-backup-test-prod-bak?project=k8s-gcr-backup-test-prod-bak&authuser=0&folder=true&organizationId=true), [`gs://k8s-gcr-audit-test-prod`](https://console.cloud.google.com/storage/browser/k8s-gcr-audit-test-prod?project=k8s-gcr-audit-test-prod&authuser=0&folder=true&organizationId=true) look empty
+    - Are we using them?
+    - Who/What and when is pushing to these buckets?
+  - [cc. @justaugustus] There is some empty, recently created file at bucket [`gs://k8s-release-test-prod`](https://console.cloud.google.com/storage/browser/k8s-release-test-prod?project=k8s-release-test-prod&authuser=0&folder=true&organizationId=true)
+    - What is the purpose of this bucket?
+    - What is the process of pushing to that bucket?
