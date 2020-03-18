@@ -1,4 +1,9 @@
-# Main Project
+# Main Project <!-- omit in toc -->
+
+- [Flow Chart](#flow-chart)
+- [Terraform data sources and resources](#terraform-data-sources-and-resources)
+- [Components](#components)
+- [Yaml representation of Components](#yaml-representation-of-componentsg1g2)
 
 ## Flow Chart
 
