@@ -15,4 +15,4 @@ google_project_iam_binding:
     project: k8s-releng-prod
 google_project_service:
   - service: cloudkms.googleapis.com
-    project: k8s-gsuite
+    project: k8s-releng-prod
