@@ -1,5 +1,9 @@
 # Main Project
 
+## Flow Chart
+
+![Flow Chart for ensure-main-project.sh script](flow_chart.svg)
+
 ## Terraform data sources and resources
 
 - Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
@@ -13,10 +17,10 @@
     - [`google_bigquery_dataset`](https://www.terraform.io/docs/providers/google/r/bigquery_dataset.html "Resource: Google BigQuery DataSet")
     - [`google_logging_billing_account_sink`](https://www.terraform.io/docs/providers/google/r/logging_billing_account_sink.html "Resource: Google Logging Billing Account Sink")
     - [`google_project_iam_binding`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Binding")
-    - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Member")[<sup>G2</sup>](#global-reference)
+    - [`google_project_iam_member`](https://www.terraform.io/docs/providers/google/r/google_project_iam.html "Resource: Google Project IAM Member")[<sup>G2</sup>](../README.md#global-reference)
     - [`google_project_iam_custom_role`](https://www.terraform.io/docs/providers/google/r/google_project_iam_custom_role.html "Resource: Google IAM Custom Role")
     - [`google_storage_bucket_iam_binding`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Binding")
-    - [`google_storage_bucket_iam_member`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Member")[<sup>G2</sup>](#global-reference)
+    - [`google_storage_bucket_iam_member`](https://www.terraform.io/docs/providers/google/r/storage_bucket_iam.html "Resource: Google Storage Bucket IAM Member")[<sup>G2</sup>](../README.md#global-reference)
 
 ## Components
 

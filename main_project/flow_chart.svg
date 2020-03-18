@@ -1,0 +1,1110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="499 -521.5 1306.932 1623.885">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="f" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-9 -4 10 8" markerWidth="10" markerHeight="8" color="gray">
+      <path d="M-8 0l8 3v-6z" fill="currentColor" stroke="currentColor"/>
+    </marker>
+  </defs>
+  <g fill="none">
+    <path d="M503-520.5h163.621a3 3 0 013 3v26a3 3 0 01-3 3H503a3 3 0 01-3-3v-26a3 3 0 013-3z" fill="#fff"/>
+    <path d="M503-520.5h163.621a3 3 0 013 3v26a3 3 0 01-3 3H503a3 3 0 01-3-3v-26a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <text transform="translate(520 -515.5)" fill="#000">
+      <tspan font-family="Courier" font-size="18" font-weight="700" x="0" y="18">Main Project</tspan>
+    </text>
+    <path d="M503-158h193.828a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V-155a3 3 0 013-3z" fill="#ffffc0"/>
+    <path d="M503-158h193.828a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V-155a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M617.816-154.804h72.012a3 3 0 013 3v12a3 3 0 01-3 3h-72.012a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M617.816-154.804h72.012a3 3 0 013 3v12a3 3 0 01-3 3h-72.012a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(617.816 -151.804)" fill="#000">
+      <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+    </text>
+    <text transform="translate(507 -152.804)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_project</tspan>
+    </text>
+    <path d="M503-474.5h461.657a3 3 0 013 3V-168a3 3 0 01-3 3H503a3 3 0 01-3-3v-303.5a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+    <clipPath id="a">
+      <path d="M3 0h461.656a3 3 0 013 3v303.5a3 3 0 01-3 3H3a3 3 0 01-3-3V3a3 3 0 013-3z"/>
+    </clipPath>
+    <text clip-path="url(#a)" transform="translate(500 -474.5)" fill="#000">
+      <tspan font-family="Courier" font-size="16" font-weight="400" x="5" y="20">vars</tspan>
+    </text>
+    <path d="M510-444h303.248a3 3 0 013 3v18a3 3 0 01-3 3H510a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M510-444h303.248a3 3 0 013 3v18a3 3 0 01-3 3H510a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(514 -439)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">SCRIPT_DIR</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=$(dirname &quot;${BASH_SOURCE[0]}&quot;)</tspan>
+    </text>
+    <path d="M510-413h202.432a3 3 0 013 3v18a3 3 0 01-3 3H510a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M510-413h202.432a3 3 0 013 3v18a3 3 0 01-3 3H510a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(514 -408)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">PROJECT</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;kubernetes-public&quot;</tspan>
+    </text>
+    <path d="M510.385-382h339.254a3 3 0 013 3v18a3 3 0 01-3 3H510.385a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M510.385-382h339.254a3 3 0 013 3v18a3 3 0 01-3 3H510.385a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(514.385 -377)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">BQ_BILLING_DATASET</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;kubernetes_public_billing&quot;</tspan>
+    </text>
+    <path d="M510.385-351h418.467a3 3 0 013 3v18a3 3 0 01-3 3H510.385a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M510.385-351h418.467a3 3 0 013 3v18a3 3 0 01-3 3H510.385a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(514.385 -346)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">BQ_ADMINS_GROUP</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;k8s-infra-bigquery-admins@kubernetes.io&quot;</tspan>
+    </text>
+    <path d="M510.385-320h447.272a3 3 0 013 3v18a3 3 0 01-3 3H510.385a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M510.385-320h447.272a3 3 0 013 3v18a3 3 0 01-3 3H510.385a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(514.385 -315)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">CLUSTER_ADMINS_GROUP</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;k8s-infra-cluster-admins@kubernetes.io&quot;</tspan>
+    </text>
+    <path d="M510.77-289h418.467a3 3 0 013 3v18a3 3 0 01-3 3H510.77a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+    <path d="M510.77-289h418.467a3 3 0 013 3v18a3 3 0 01-3 3H510.77a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+    <text transform="translate(514.77 -284)" fill="#000">
+      <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ACCOUNTING_GROUP</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;k8s-infra-gcp-accounting@kubernetes.io&quot;</tspan>
+    </text>
+    <g>
+      <path d="M510.77-258h404.064a3 3 0 013 3v18a3 3 0 01-3 3H510.77a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M510.77-258h404.064a3 3 0 013 3v18a3 3 0 01-3 3H510.77a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(514.77 -253)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">CLUSTER_TERRAFORM_BUCKET</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;k8s-infra-clusters-terraform&quot;</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M510.77-227h404.064a3 3 0 013 3v18a3 3 0 01-3 3H510.77a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M510.77-227h404.064a3 3 0 013 3v18a3 3 0 01-3 3H510.77a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(514.77 -222)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">CLUSTER_USERS_GROUP</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;gke-security-groups@kubernetes.io&quot;</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M511.155-196h339.254a3 3 0 013 3v18a3 3 0 01-3 3H511.155a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M511.155-196h339.254a3 3 0 013 3v18a3 3 0 01-3 3H511.155a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(515.155 -191)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">DNS_GROUP</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=&quot;k8s-infra-dns-admins@kubernetes.io&quot;</tspan>
+      </text>
+    </g>
+    <g>
+      <path d="M503-126.607h310.099a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503-126.607h310.099a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066-123.411h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066-123.411h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 -120.411)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077-123.411H806.1a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077-123.411H806.1a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 -120.411)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">compute.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 -121.41)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503-95.215h310.099a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503-95.215h310.099a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066-92.019h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066-92.019h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 -89.019)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077-92.019H806.1a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077-92.019H806.1a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 -89.019)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">logging.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 -90.018)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503-63.822h328.102a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503-63.822h328.102a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066-60.626h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066-60.626h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 -57.626)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077-60.626h150.025a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077-60.626h150.025a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 -57.626)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">monitoring.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 -58.626)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503-32.43h346.105a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V-29.43a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503-32.43h346.105a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V-29.43a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066-29.233h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066-29.233h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 -26.233)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077-29.233h168.028a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077-29.233h168.028a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 -26.233)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">bigquery-json.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 -27.233)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503-1.037h322.1a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V1.963a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503-1.037h322.1a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V1.963a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066 2.16h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066 2.16h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 5.16)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077 2.16h144.024a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077 2.16h144.024a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 5.16)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">container.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 4.16)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 30.356h370.109a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3V33.356a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 30.356h370.109a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3V33.356a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066 33.552h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066 33.552h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 36.552)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077 33.552H866.11a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077 33.552H866.11a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 36.552)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">storage-component.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 35.552)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 61.748h310.099a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V64.748a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 61.748h310.099a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V64.748a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066 64.944h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066 64.944h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 67.944)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077 64.944H806.1a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077 64.944H806.1a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 67.944)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">oslogin.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 66.944)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 93.14h286.095a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V96.141a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 93.14h286.095a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V96.141a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M589.066 96.337h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M589.066 96.337h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(589.066 99.337)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M674.077 96.337h108.018a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M674.077 96.337h108.018a3 3 0 013 3v12a3 3 0 01-3 3H674.077a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(674.077 99.337)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">dns.googleapis.com</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.054 98.337)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">enable_api</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 124.533h490.097a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 124.533h490.097a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M782.064 127.73h204.033a3 3 0 013 3v12a3 3 0 01-3 3H782.064a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M782.064 127.73h204.033a3 3 0 013 3v12a3 3 0 01-3 3H782.064a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(782.064 130.73)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;gs://${CLUSTER_TERRAFORM_BUCKET}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M697.052 127.73h72.012a3 3 0 013 3v12a3 3 0 01-3 3h-72.012a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M697.052 127.73h72.012a3 3 0 013 3v12a3 3 0 01-3 3h-72.012a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(697.052 130.73)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 129.73)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_private_gcs_bucket</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 155.926h740.331a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 155.926h740.331a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M851.27 159.122h210.035a3 3 0 013 3v12a3 3 0 01-3 3H851.271a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M851.27 159.122h210.035a3 3 0 013 3v12a3 3 0 01-3 3H851.271a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(851.27 162.122)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--member &quot;group:${BQ_ADMINS_GROUP}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M766.26 159.122h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M766.26 159.122h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(766.26 162.122)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 161.122)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gcloud</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 159.122h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 159.122h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 162.122)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">projects</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M621.238 159.122h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M621.238 159.122h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(621.238 162.122)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">add-iam-policy-binding</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1074.305 159.122h162.026a3 3 0 013 3v12a3 3 0 01-3 3h-162.026a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1074.305 159.122h162.026a3 3 0 013 3v12a3 3 0 01-3 3h-162.026a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1074.305 162.122)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--role roles/bigquery.admin</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 187.318h776.337a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 187.318h776.337a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M851.27 190.514h240.04a3 3 0 013 3v12a3 3 0 01-3 3H851.27a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M851.27 190.514h240.04a3 3 0 013 3v12a3 3 0 01-3 3H851.27a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(851.27 193.514)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--member &quot;group:${CLUSTER_ADMINS_GROUP}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M766.26 190.514h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M766.26 190.514h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(766.26 193.514)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 192.514)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gcloud</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 190.514h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 190.514h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 193.514)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">projects</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M621.238 190.515h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M621.238 190.515h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(621.238 193.515)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">add-iam-policy-binding</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1104.31 190.515h168.027a3 3 0 013 3v12a3 3 0 01-3 3H1104.31a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1104.31 190.515h168.027a3 3 0 013 3v12a3 3 0 01-3 3H1104.31a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1104.31 193.515)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--role roles/container.admin</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 287.211h938.364a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V290.21a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 287.211h938.364a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V290.21a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M851.27 290.407h240.04a3 3 0 013 3v12a3 3 0 01-3 3H851.27a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M851.27 290.407h240.04a3 3 0 013 3v12a3 3 0 01-3 3H851.27a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(851.27 293.407)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--member &quot;group:${CLUSTER_ADMINS_GROUP}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M766.26 290.407h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M766.26 290.407h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(766.26 293.407)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 292.407)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gcloud</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 290.407h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 290.407h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 293.407)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">projects</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M621.238 290.407h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M621.238 290.407h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(621.238 293.407)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">add-iam-policy-binding</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1104.31 290.407h330.054a3 3 0 013 3v12a3 3 0 01-3 3H1104.31a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M1104.31 290.407h330.054a3 3 0 013 3v12a3 3 0 01-3 3H1104.31a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1104.31 293.407)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--role &quot;projects/${PROJECT}/roles/ServiceAccountLister&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 218.711h1299.432a3 3 0 013 3v55.5a3 3 0 01-3 3H503a3 3 0 01-3-3v-55.5a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+      <clipPath id="b">
+        <path d="M3 0h1299.432a3 3 0 013 3v55.5a3 3 0 01-3 3H3a3 3 0 01-3-3V3a3 3 0 013-3z"/>
+      </clipPath>
+      <text clip-path="url(#b)" transform="translate(500 218.711)" fill="#000">
+        <tspan font-family="Courier" font-size="16" font-weight="400" x="5" y="20">if:</tspan>
+      </text>
+      <path d="M543.143 223.634h691.312a3 3 0 013 3v14a3 3 0 01-3 3H543.143a3 3 0 01-3-3v-14a3 3 0 013-3z" fill="#e5e5e5"/>
+      <path d="M543.143 223.634h691.312a3 3 0 013 3v14a3 3 0 01-3 3H543.143a3 3 0 01-3-3v-14a3 3 0 013-3z" stroke="#666" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(543.143 226.634)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="400" x="0" y="11">if ! gcloud --project &quot;</tspan> <tspan font-family="Courier" font-size="12" font-weight="700" y="11">${PROJECT}</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">&quot; iam roles describe ServiceAccountLister &gt;/dev/null 2&gt;&amp;1; then</tspan>
+      </text>
+      <path d="M510.023 249.911h1285.41a3 3 0 013 3v18.393a3 3 0 01-3 3H510.022a3 3 0 01-3-3V252.91a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M510.023 249.911h1285.41a3 3 0 013 3v18.393a3 3 0 01-3 3H510.022a3 3 0 01-3-3V252.91a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M567.253 253.107h132.021a3 3 0 013 3v12a3 3 0 01-3 3H567.253a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M567.253 253.107h132.021a3 3 0 013 3v12a3 3 0 01-3 3H567.253a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(567.253 256.107)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--project &quot;${PROJECT}&quot;</tspan>
+      </text>
+      <text transform="translate(514.046 255.107)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gcloud</tspan>
+      </text>
+      <g>
+        <path d="M712.274 253.107h42.007a3 3 0 013 3v12a3 3 0 01-3 3h-42.007a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M712.274 253.107h42.007a3 3 0 013 3v12a3 3 0 01-3 3h-42.007a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(712.274 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--quiet</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M767.281 253.107h18.003a3 3 0 013 3v12a3 3 0 01-3 3h-18.003a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M767.281 253.107h18.003a3 3 0 013 3v12a3 3 0 01-3 3h-18.003a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(767.281 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">iam</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M798.284 253.107h30.005a3 3 0 013 3v12a3 3 0 01-3 3h-30.005a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M798.284 253.107h30.005a3 3 0 013 3v12a3 3 0 01-3 3h-30.005a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(798.284 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">roles</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M841.289 253.107h36.006a3 3 0 013 3v12a3 3 0 01-3 3h-36.006a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M841.289 253.107h36.006a3 3 0 013 3v12a3 3 0 01-3 3h-36.006a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(841.289 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">create</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M890.295 253.107h120.02a3 3 0 013 3v12a3 3 0 01-3 3h-120.02a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M890.295 253.107h120.02a3 3 0 013 3v12a3 3 0 01-3 3h-120.02a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(890.295 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">ServiceAccountLister</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1023.314 253.107h192.031a3 3 0 013 3v12a3 3 0 01-3 3h-192.03a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1023.314 253.107h192.031a3 3 0 013 3v12a3 3 0 01-3 3h-192.03a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1023.314 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--title &quot;Service Account Lister&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1228.345 253.107h246.04a3 3 0 013 3v12a3 3 0 01-3 3h-246.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1228.345 253.107h246.04a3 3 0 013 3v12a3 3 0 01-3 3h-246.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1228.345 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--description &quot;Can list ServiceAccounts.&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1487.386 253.107h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1487.386 253.107h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1487.386 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--stage GA</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1560.395 253.107h228.037a3 3 0 013 3v12a3 3 0 01-3 3h-228.037a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1560.395 253.107h228.037a3 3 0 013 3v12a3 3 0 01-3 3h-228.037a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1560.395 256.107)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--permissions iam.serviceAccounts.list</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 318.604h595.31a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 318.604h595.31a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M887.277 321.8h204.033a3 3 0 013 3v12a3 3 0 01-3 3H887.277a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M887.277 321.8h204.033a3 3 0 013 3v12a3 3 0 01-3 3H887.277a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(887.277 324.8)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;gs://${CLUSTER_TERRAFORM_BUCKET}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M616.235 321.8h258.042a3 3 0 013 3v12a3 3 0 01-3 3H616.235a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M616.235 321.8h258.042a3 3 0 013 3v12a3 3 0 01-3 3H616.235a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(616.235 324.8)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;group:${CLUSTER_ADMINS_GROUP}:objectAdmin&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 323.8)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gsutil</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 321.8h18.003a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 321.8h18.003a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 324.8)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">iam</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M591.233 321.8h12.002a3 3 0 013 3v12a3 3 0 01-3 3h-12.002a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M591.233 321.8h12.002a3 3 0 013 3v12a3 3 0 01-3 3h-12.002a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(591.233 324.8)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">ch</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 349.996h631.316a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 349.996h631.316a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M923.283 353.192h204.033a3 3 0 013 3v12a3 3 0 01-3 3H923.283a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M923.283 353.192h204.033a3 3 0 013 3v12a3 3 0 01-3 3H923.283a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(923.283 356.192)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;gs://${CLUSTER_TERRAFORM_BUCKET}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M616.235 353.193h294.048a3 3 0 013 3v12a3 3 0 01-3 3H616.235a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M616.235 353.193h294.048a3 3 0 013 3v12a3 3 0 01-3 3H616.235a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(616.235 356.193)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;group:${CLUSTER_ADMINS_GROUP}:legacyBucketOwner&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 355.192)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gsutil</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 353.192h18.003a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 353.192h18.003a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 356.192)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">iam</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M591.233 353.193h12.002a3 3 0 013 3v12a3 3 0 01-3 3h-12.002a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M591.233 353.193h12.002a3 3 0 013 3v12a3 3 0 01-3 3h-12.002a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(591.233 356.193)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">ch</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 381.389h830.346a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3V384.39a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 381.389h830.346a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3V384.39a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M851.27 384.585h234.039a3 3 0 013 3v12a3 3 0 01-3 3H851.271a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M851.27 384.585h234.039a3 3 0 013 3v12a3 3 0 01-3 3H851.271a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(851.27 387.585)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--member &quot;group:${CLUSTER_USERS_GROUP}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M766.26 384.585h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M766.26 384.585h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(766.26 387.585)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 386.585)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gcloud</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 384.585h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 384.585h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 387.585)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">projects</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M621.238 384.585h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M621.238 384.585h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(621.238 387.585)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">add-iam-policy-binding</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1098.309 384.585h228.037a3 3 0 013 3v12a3 3 0 01-3 3H1098.31a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1098.309 384.585h228.037a3 3 0 013 3v12a3 3 0 01-3 3H1098.31a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1098.309 387.585)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--role &quot;roles/container.clusterViewer&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 412.781h674.32a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V415.78a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 412.781h674.32a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3V415.78a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M851.27 415.978h174.03a3 3 0 013 3v12a3 3 0 01-3 3H851.27a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M851.27 415.978h174.03a3 3 0 013 3v12a3 3 0 01-3 3H851.27a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(851.27 418.978)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--member &quot;group:${DNS_GROUP}&quot;</tspan>
+      </text>
+      <g>
+        <path d="M766.26 415.978h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M766.26 415.978h72.01a3 3 0 013 3v12a3 3 0 01-3 3h-72.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(766.26 418.978)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(507.023 417.978)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">gcloud</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M560.23 415.978h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M560.23 415.978h48.008a3 3 0 013 3v12a3 3 0 01-3 3H560.23a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(560.23 418.978)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">projects</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M621.238 415.978h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M621.238 415.978h132.021a3 3 0 013 3v12a3 3 0 01-3 3H621.238a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(621.238 418.978)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">add-iam-policy-binding</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M1038.3 415.978h132.02a3 3 0 013 3v12a3 3 0 01-3 3H1038.3a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M1038.3 415.978h132.02a3 3 0 013 3v12a3 3 0 01-3 3H1038.3a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(1038.3 418.978)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--role roles/dns.admin</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 444.174h322.1a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 444.174h322.1a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 447.37h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 447.37h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 450.37)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 449.37)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 447.37h48.008a3 3 0 013 3v12a3 3 0 01-3 3h-48.008a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 447.37h48.008a3 3 0 013 3v12a3 3 0 01-3 3h-48.008a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 450.37)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;k8s-io&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M771.06 447.37h48.008a3 3 0 013 3v12a3 3 0 01-3 3H771.06a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M771.06 447.37h48.008a3 3 0 013 3v12a3 3 0 01-3 3H771.06a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(771.06 450.37)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;k8s.io&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 475.567h407.112a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 475.567h407.112a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.072 478.763h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.072 478.763h72.011a3 3 0 013 3v12a3 3 0 01-3 3h-72.011a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.072 481.763)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.054 480.763)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.083 478.763h90.015a3 3 0 013 3v12a3 3 0 01-3 3h-90.015a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.083 478.763h90.015a3 3 0 013 3v12a3 3 0 01-3 3h-90.015a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.083 481.763)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;kubernetes-io&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M813.098 478.763h90.014a3 3 0 013 3v12a3 3 0 01-3 3h-90.014a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M813.098 478.763h90.014a3 3 0 013 3v12a3 3 0 01-3 3h-90.014a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(813.098 481.763)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;kubernetes.io&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 506.96h347.072a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 506.96h347.072a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 510.155h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 510.155h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 513.155)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 512.155)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 510.155h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 510.155h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 513.155)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;x-k8s-io&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M783.062 510.155h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M783.062 510.155h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(783.062 513.155)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;x-k8s.io&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 538.352h383.077a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 538.352h383.077a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 541.548h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 541.548h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 544.548)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 543.548)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 541.548h78.013a3 3 0 013 3v12a3 3 0 01-3 3h-78.013a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 541.548h78.013a3 3 0 013 3v12a3 3 0 01-3 3h-78.013a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 544.548)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;k8s-e2e-com&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M801.065 541.548h78.012a3 3 0 013 3v12a3 3 0 01-3 3h-78.012a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M801.065 541.548h78.012a3 3 0 013 3v12a3 3 0 01-3 3h-78.012a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(801.065 544.548)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;k8s-e2e.com&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 569.744h407.082a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 569.744h407.082a3 3 0 013 3v18.393a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 572.94h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 572.94h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 575.94)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 574.94)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 572.94h90.015a3 3 0 013 3v12a3 3 0 01-3 3h-90.015a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 572.94h90.015a3 3 0 013 3v12a3 3 0 01-3 3h-90.015a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 575.94)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary-k8s-io&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M813.067 572.94h90.014a3 3 0 013 3v12a3 3 0 01-3 3h-90.014a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M813.067 572.94h90.014a3 3 0 013 3v12a3 3 0 01-3 3h-90.014a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(813.067 575.94)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary.k8s.io&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 601.137h491a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 601.137h491a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 604.333h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 604.333h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 607.333)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 606.333)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 604.333h132.022a3 3 0 013 3v12a3 3 0 01-3 3H710.052a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 604.333h132.022a3 3 0 013 3v12a3 3 0 01-3 3H710.052a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 607.333)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary-kubernetes-io&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M855.074 604.333h132.021a3 3 0 013 3v12a3 3 0 01-3 3H855.074a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M855.074 604.333h132.021a3 3 0 013 3v12a3 3 0 01-3 3H855.074a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(855.074 607.333)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary.kubernetes.io&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 632.53h431.085a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 632.53h431.085a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 635.726h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 635.726h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 638.726)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 637.726)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 635.726H812.07a3 3 0 013 3v12a3 3 0 01-3 3H710.052a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 635.726H812.07a3 3 0 013 3v12a3 3 0 01-3 3H710.052a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 638.726)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary-x-k8s-io&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M825.069 635.726h102.016a3 3 0 013 3v12a3 3 0 01-3 3H825.07a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M825.069 635.726h102.016a3 3 0 013 3v12a3 3 0 01-3 3H825.07a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(825.069 638.726)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary.x-k8s.io&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 663.922h467.091a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M503 663.922h467.091a3 3 0 013 3v18.392a3 3 0 01-3 3H503a3 3 0 01-3-3v-18.392a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M625.04 667.118h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M625.04 667.118h72.012a3 3 0 013 3v12a3 3 0 01-3 3H625.04a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(625.04 670.118)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(507.023 669.118)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ensure_dns_zone</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M710.052 667.118h120.02a3 3 0 013 3v12a3 3 0 01-3 3h-120.02a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M710.052 667.118h120.02a3 3 0 013 3v12a3 3 0 01-3 3h-120.02a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(710.052 670.118)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary-k8s-e2e-com&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M843.072 667.118h120.02a3 3 0 013 3v12a3 3 0 01-3 3h-120.02a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M843.072 667.118h120.02a3 3 0 013 3v12a3 3 0 01-3 3h-120.02a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(843.072 670.118)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;canary.k8s-e2e.com&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 695.314h594.432a3 3 0 013 3v55.5a3 3 0 01-3 3H503a3 3 0 01-3-3v-55.5a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+      <clipPath id="c">
+        <path d="M3 0h594.432a3 3 0 013 3v55.5a3 3 0 01-3 3H3a3 3 0 01-3-3V3a3 3 0 013-3z"/>
+      </clipPath>
+      <text clip-path="url(#c)" transform="translate(500 695.314)" fill="#000">
+        <tspan font-family="Courier" font-size="16" font-weight="400" x="5" y="20">if:</tspan>
+      </text>
+      <path d="M543.143 700.238h547.289a3 3 0 013 3v14a3 3 0 01-3 3h-547.29a3 3 0 01-3-3v-14a3 3 0 013-3z" fill="#e5e5e5"/>
+      <path d="M543.143 700.238h547.289a3 3 0 013 3v14a3 3 0 01-3 3h-547.29a3 3 0 01-3-3v-14a3 3 0 013-3z" stroke="#666" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(543.143 703.238)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="400" x="0" y="11">! bq --project </tspan> <tspan font-family="Courier" font-size="12" font-weight="700" y="11">&quot;${PROJECT}&quot;</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11"> ls </tspan> <tspan font-family="Courier" font-size="12" font-weight="700" y="11">&quot;${BQ_BILLING_DATASET}&quot;</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11"> &gt;/dev/null 2&gt;&amp;1; then</tspan>
+      </text>
+      <path d="M510.023 726.514H854.47a3 3 0 013 3v18.393a3 3 0 01-3 3H510.023a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M510.023 726.514H854.47a3 3 0 013 3v18.393a3 3 0 01-3 3H510.023a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <g>
+        <path d="M538.448 729.71H670.47a3 3 0 013 3v12a3 3 0 01-3 3H538.447a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M538.448 729.71H670.47a3 3 0 013 3v12a3 3 0 01-3 3H538.447a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(538.448 732.71)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--project &quot;${PROJECT}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <text transform="translate(514.046 731.71)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">bq</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M683.47 729.71h12.001a3 3 0 013 3v12a3 3 0 01-3 3H683.47a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M683.47 729.71h12.001a3 3 0 013 3v12a3 3 0 01-3 3H683.47a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(683.47 732.71)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">mk</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M708.471 729.71h138.023a3 3 0 013 3v12a3 3 0 01-3 3H708.47a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M708.471 729.71h138.023a3 3 0 013 3v12a3 3 0 01-3 3H708.47a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(708.471 732.71)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${BQ_BILLING_DATASET}&quot;</tspan>
+        </text>
+      </g>
+    </g>
+    <g>
+      <path d="M503 763.814h850.393a3 3 0 013 3v332.07a3 3 0 01-3 3H503a3 3 0 01-3-3v-332.07a3 3 0 013-3z" stroke="#ff2600" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+      <path d="M510.023 770.814h396.46a3 3 0 013 3v55.5a3 3 0 01-3 3h-396.46a3 3 0 01-3-3v-55.5a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+      <clipPath id="d">
+        <path d="M3 0h396.46a3 3 0 013 3v55.5a3 3 0 01-3 3H3a3 3 0 01-3-3V3a3 3 0 013-3z"/>
+      </clipPath>
+      <text clip-path="url(#d)" transform="translate(507.023 770.814)" fill="#000">
+        <tspan font-family="Courier" font-size="16" font-weight="400" x="5" y="20">vars</tspan>
+      </text>
+      <path d="M517.023 801.314h382.46a3 3 0 013 3v18a3 3 0 01-3 3h-382.46a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M517.023 801.314h382.46a3 3 0 013 3v18a3 3 0 01-3 3h-382.46a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(521.023 806.314)" fill="#000">
+        <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">CUR</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=$(mktemp -p /tmp k8s-infra-bq-access-cur-XXXXXX)</tspan>
+      </text>
+      <path d="M510.054 839.314h495.491a3 3 0 013 3v18.393a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+      <path d="M510.054 839.314h495.491a3 3 0 013 3v18.393a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M702.502 842.51h216.035a3 3 0 013 3v12a3 3 0 01-3 3H702.502a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+      <path d="M702.502 842.51h216.035a3 3 0 013 3v12a3 3 0 01-3 3H702.502a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+      <text transform="translate(702.502 845.51)" fill="#000">
+        <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;:&quot;${BQ_BILLING_DATASET}&quot;</tspan>
+      </text>
+      <g>
+        <text transform="translate(514.077 844.51)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">bq</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M931.537 842.51h6a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M931.537 842.51h6a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(931.537 845.51)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&gt;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M538.48 842.51h24.003a3 3 0 013 3v12a3 3 0 01-3 3h-24.004a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M538.48 842.51h24.003a3 3 0 013 3v12a3 3 0 01-3 3h-24.004a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(538.48 845.51)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">show</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M575.483 842.51h114.019a3 3 0 013 3v12a3 3 0 01-3 3H575.483a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M575.483 842.51h114.019a3 3 0 013 3v12a3 3 0 01-3 3H575.483a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(575.483 845.51)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--format=prettyjson</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M950.538 842.51h48.007a3 3 0 013 3v12a3 3 0 01-3 3h-48.007a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M950.538 842.51h48.007a3 3 0 013 3v12a3 3 0 01-3 3h-48.007a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(950.538 845.51)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${CUR}&quot;</tspan>
+        </text>
+      </g>
+      <g>
+        <path d="M510.054 870.707h418.064a3 3 0 013 3v55.5a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-55.5a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+        <clipPath id="e">
+          <path d="M3 0h418.065a3 3 0 013 3v55.5a3 3 0 01-3 3H3a3 3 0 01-3-3V3a3 3 0 013-3z"/>
+        </clipPath>
+        <text clip-path="url(#e)" transform="translate(507.054 870.707)" fill="#000">
+          <tspan font-family="Courier" font-size="16" font-weight="400" x="5" y="20">vars</tspan>
+        </text>
+        <g>
+          <path d="M517.054 901.207h404.064a3 3 0 013 3v18a3 3 0 01-3 3H517.054a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+          <path d="M517.054 901.207h404.064a3 3 0 013 3v18a3 3 0 01-3 3H517.054a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(521.054 906.207)" fill="#000">
+            <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">ENSURE</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=$(mktemp -p /tmp k8s-infra-bq-access-new-XXXXXX)</tspan>
+          </text>
+        </g>
+      </g>
+      <g>
+        <path d="M510.054 939.207h201.388a3 3 0 013 3V960.6a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M510.054 939.207h201.388a3 3 0 013 3V960.6a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M565.421 942.403h66.011a3 3 0 013 3v12a3 3 0 01-3 3h-66.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M565.421 942.403h66.011a3 3 0 013 3v12a3 3 0 01-3 3h-66.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(565.421 945.403)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${ENSURE}&quot;</tspan>
+        </text>
+        <g>
+          <text transform="translate(514.817 944.403)" fill="#000">
+            <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">cat</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M644.432 942.403h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M644.432 942.403h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(644.432 945.403)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&lt;&lt; __EOF__</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M546.42 942.403h6.001a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M546.42 942.403h6.001a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(546.42 945.403)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&gt;</tspan>
+          </text>
+        </g>
+      </g>
+      <g>
+        <path d="M1072.349 829.99h274.044a3 3 0 013 3v196a3 3 0 01-3 3h-274.044a3 3 0 01-3-3v-196a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+        <text transform="translate(1074.349 834.99)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">{</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="22"> &quot;access&quot;: [</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="34"> {</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="46"> &quot;groupByEmail&quot;: &quot;${ACCOUNTING_GROUP}&quot;,</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="58"> &quot;role&quot;: &quot;READER&quot;</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="70"> },</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="82"> {</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="94"> &quot;groupByEmail&quot;: &quot;${ACCOUNTING_GROUP}&quot;,</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="106"> &quot;role&quot;: &quot;roles/bigquery.metadataViewer&quot;</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="118"> },</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="130"> {</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="142"> &quot;groupByEmail&quot;: &quot;${ACCOUNTING_GROUP}&quot;,</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="154"> &quot;role&quot;: &quot;roles/bigquery.user&quot;</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="166"> }</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="178"> ]</tspan> <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="190">}</tspan>
+        </text>
+      </g>
+      <g>
+        <path marker-start="url(#f)" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0" d="M724.333 950.995l345.016-14.23"/>
+      </g>
+      <g>
+        <path d="M510.023 970.6h410.863a3 3 0 013 3v55.5a3 3 0 01-3 3H510.023a3 3 0 01-3-3v-55.5a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4.0,4.0"/>
+        <clipPath id="g">
+          <path d="M3 0h410.863a3 3 0 013 3v55.5a3 3 0 01-3 3H3a3 3 0 01-3-3V3a3 3 0 013-3z"/>
+        </clipPath>
+        <text clip-path="url(#g)" transform="translate(507.023 970.6)" fill="#000">
+          <tspan font-family="Courier" font-size="16" font-weight="400" x="5" y="21">vars</tspan>
+        </text>
+        <g>
+          <path d="M517.023 1001.1h396.863a3 3 0 013 3v18a3 3 0 01-3 3H517.023a3 3 0 01-3-3v-18a3 3 0 013-3z" fill="#c0ffff"/>
+          <path d="M517.023 1001.1h396.863a3 3 0 013 3v18a3 3 0 01-3 3H517.023a3 3 0 01-3-3v-18a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(521.023 1006.1)" fill="#000">
+            <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">FINAL</tspan> <tspan font-family="Courier" font-size="12" font-weight="400" y="11">=$(mktemp -p /tmp k8s-infra-bq-access-new-XXXXXX)</tspan>
+          </text>
+        </g>
+      </g>
+      <g>
+        <path d="M510.023 1039.1h550.498a3 3 0 013 3v18.392a3 3 0 01-3 3H510.023a3 3 0 01-3-3V1042.1a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M510.023 1039.1h550.498a3 3 0 013 3v18.392a3 3 0 01-3 3H510.023a3 3 0 01-3-3V1042.1a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M834.492 1042.296H882.5a3 3 0 013 3v12a3 3 0 01-3 3h-48.008a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M834.492 1042.296H882.5a3 3 0 013 3v12a3 3 0 01-3 3h-48.008a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(834.492 1045.296)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${CUR}&quot;</tspan>
+        </text>
+        <text transform="translate(514.046 1044.296)" fill="#000">
+          <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">jq</tspan>
+        </text>
+        <g>
+          <path d="M974.51 1042.296h6.001a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M974.51 1042.296h6.001a3 3 0 013 3v12a3 3 0 01-3 3h-6a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(974.51 1045.296)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&gt;</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M538.448 1042.296h12.002a3 3 0 013 3v12a3 3 0 01-3 3h-12.002a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M538.448 1042.296h12.002a3 3 0 013 3v12a3 3 0 01-3 3h-12.002a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(538.448 1045.296)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">-s</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M563.45 1042.296h258.042a3 3 0 013 3v12a3 3 0 01-3 3H563.45a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M563.45 1042.296h258.042a3 3 0 013 3v12a3 3 0 01-3 3H563.45a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(563.45 1045.296)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&apos;.[0].access + .[1].access | { access: . }&apos;</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M895.5 1042.296h66.01a3 3 0 013 3v12a3 3 0 01-3 3H895.5a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+          <path d="M895.5 1042.296h66.01a3 3 0 013 3v12a3 3 0 01-3 3H895.5a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(895.5 1045.296)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${ENSURE}&quot;</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M993.511 1042.296h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+          <path d="M993.511 1042.296h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(993.511 1045.296)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${FINAL}&quot;</tspan>
+          </text>
+        </g>
+      </g>
+      <g>
+        <path d="M510.054 1070.492h434.484a3 3 0 013 3v18.393a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-18.393a3 3 0 013-3z" fill="#ffffc0"/>
+        <path d="M510.054 1070.492h434.484a3 3 0 013 3v18.393a3 3 0 01-3 3H510.054a3 3 0 01-3-3v-18.393a3 3 0 013-3z" stroke="gray" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M721.503 1073.689h216.035a3 3 0 013 3v12a3 3 0 01-3 3H721.503a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+        <path d="M721.503 1073.689h216.035a3 3 0 013 3v12a3 3 0 01-3 3H721.503a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+        <text transform="translate(721.503 1076.689)" fill="#000">
+          <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${PROJECT}&quot;:&quot;${BQ_BILLING_DATASET}&quot;</tspan>
+        </text>
+        <g>
+          <text transform="translate(514.077 1075.689)" fill="#000">
+            <tspan font-family="Courier" font-size="12" font-weight="700" x="0" y="11">bq</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M538.48 1073.689h36.005a3 3 0 013 3v12a3 3 0 01-3 3h-36.006a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M538.48 1073.689h36.005a3 3 0 013 3v12a3 3 0 01-3 3h-36.006a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(538.48 1076.689)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">update</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M587.485 1073.689h48.008a3 3 0 013 3v12a3 3 0 01-3 3h-48.008a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#ffffc0"/>
+          <path d="M587.485 1073.689h48.008a3 3 0 013 3v12a3 3 0 01-3 3h-48.008a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#999" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(587.485 1076.689)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">--source</tspan>
+          </text>
+        </g>
+        <g>
+          <path d="M648.493 1073.689h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" fill="#c0ffff"/>
+          <path d="M648.493 1073.689h60.01a3 3 0 013 3v12a3 3 0 01-3 3h-60.01a3 3 0 01-3-3v-12a3 3 0 013-3z" stroke="#668989" stroke-linecap="round" stroke-linejoin="round"/>
+          <text transform="translate(648.493 1076.689)" fill="#000">
+            <tspan font-family="Courier" font-size="10" font-weight="400" x="0" y="10">&quot;${FINAL}&quot;</tspan>
+          </text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
