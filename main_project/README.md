@@ -1,5 +1,11 @@
 # Main Project <!-- omit in toc -->
 
+Analyzed script: [ensure-main-project.sh](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/infra/gcp/ensure-main-project.sh)
+
+---
+
+## Table of Content <!-- omit in toc -->
+
 - [Flow Chart](#flow-chart)
 - [Terraform data sources and resources](#terraform-data-sources-and-resources)
 - [Components](#components)
