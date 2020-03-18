@@ -1,0 +1,118 @@
+google_project:
+  - name: kubernetes-public
+google_project_service:
+  - service: compute.googleapis.com
+    project: kubernetes-public
+  - service: logging.googleapis.com
+    project: kubernetes-public
+  - service: monitoring.googleapis.com
+    project: kubernetes-public
+  - service: bigquery-json.googleapis.com
+    project: kubernetes-public
+  - service: container.googleapis.com
+    project: kubernetes-public
+  - service: storage-component.googleapis.com
+    project: kubernetes-public
+  - service: oslogin.googleapis.com
+    project: kubernetes-public
+  - service: dns.googleapis.com
+    project: kubernetes-public
+google_storage_bucket:
+  - name: k8s-infra-clusters-terraform
+    bucket_policy_only: true
+    location: us
+    project: kubernetes-public
+google_dns_managed_zone:
+  - name: k8s-io
+    dns_name: k8s.io.
+    project: kubernetes-public
+  - name: kubernetes-io
+    dns_name: kubernetes.io.
+    project: kubernetes-public
+  - name: x-k8s-io
+    dns_name: x-k8s.io.
+    project: kubernetes-public
+  - name: k8s-e2e-com
+    dns_name: k8s-e2e.com.
+    project: kubernetes-public
+  - name: canary-k8s-io
+    dns_name: canary.k8s.io.
+    project: kubernetes-public
+  - name: canary-kubernetes-io
+    dns_name: canary.kubernetes.io.
+    project: kubernetes-public
+  - name: canary-x-k8s-io
+    dns_name: canary.x-k8s.io.
+    project: kubernetes-public
+  - name: canary-k8s-e2e-com
+    dns_name: canary.k8s-e2e.com.
+    project: kubernetes-public
+google_bigquery_dataset:
+  - dataset_id: kubernetes_public_billing
+    access:
+      - role: READER
+        group_by_email: k8s-infra-gcp-accounting@kubernetes.io
+      - role: roles/bigquery.metadataViewer
+        group_by_email: k8s-infra-gcp-accounting@kubernetes.io
+      - role: roles/bigquery.user
+        group_by_email: k8s-infra-gcp-accounting@kubernetes.io
+      # https://cloud.google.com/logging/docs/api/tasks/exporting-logs#writing_to_the_destination
+      - role: roles/bigquery.dataEditor
+        # serviceAccount email will be taken from "google_logging_billing_account_sink" resource's
+        # attributes reference
+        user_by_email: "[google_logging_billing_account_sink.kubernetes_public_billing_sink.writer_identity]"
+    delete_contents_on_destroy: false
+    project: kubernetes-public
+google_logging_billing_account_sink:
+# To be able to create/manage this resource, the credentials
+# used with Terraform has to have granted IAM role: "roles/logging.configWriter"
+# Using this resource swhould remove the need of manual steps which needs to be done:
+# https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/infra/gcp/ensure-main-project.sh#L179-L192
+  - name: kubernetes_public_billing_sink
+    billing_account: 018801-93540E-22A20E
+    destination: bigquery.googleapis.com/projects/kubernetes-public/datasets/kubernetes_public_billing
+google_project_iam_custom_role:
+  - role_id: ServiceAccountLister
+    title: Can list ServiceAccounts.
+    permissions:
+      - iam.serviceAccounts.list
+    stage: GA
+    project: kubernetes-public
+google_project_iam_binding:
+  - role: roles/bigquery.admin
+    members:
+      - group:k8s-infra-bigquery-admins@kubernetes.io
+    project: kubernetes-public
+  - role: roles/compute.viewer
+    members:
+      - group:k8s-infra-cluster-admins@kubernetes.io
+    project: kubernetes-public
+  - role: roles/container.admin
+    members:
+      - group:k8s-infra-cluster-admins@kubernetes.io
+    project: kubernetes-public
+  - role: roles/container.clusterViewer
+    members:
+      - group:gke-security-groups@kubernetes.io
+    project: kubernetes-public
+  - role: roles/bigquery.jobUser
+    members:
+      - group:k8s-infra-gcp-accounting@kubernetes.io
+    project: kubernetes-public
+  - role: roles/dns.admin
+    members:
+      - group:k8s-infra-dns-admins@kubernetes.io
+    project: kubernetes-public
+  - role: projects/kubernetes-public/roles/ServiceAccountLister
+    members:
+      - group:k8s-infra-cluster-admins@kubernetes.io
+    project: kubernetes-public
+google_storage_bucket_iam_binding:
+  - role: roles/storage.objectAdmin
+    members:
+      - group:k8s-infra-cluster-admins@kubernetes.io
+    bucket: gs://k8s-infra-clusters-terraform
+  - role: roles/storage.legacyBucketOwner
+    members:
+      - group:k8s-infra-cluster-admins@kubernetes.io
+    bucket: gs://k8s-infra-clusters-terraform
