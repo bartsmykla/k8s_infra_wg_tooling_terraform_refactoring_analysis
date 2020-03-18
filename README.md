@@ -166,13 +166,11 @@ What I don't like is there are places like CIP Auditor which need some scripts b
   - `canary-k8s-e2e-com` : `canary.k8s-e2e.com`
 - Bigquery DataSet:
 
-  > [**@bartsmykla**]: In [current code](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-main-project.sh#L146-L177) we are appending three roles below to already existing ones. We need to make sure we know about every other role and explicitly pur them in terraform or if they are the default roles if terraform will apply them by default
-  >
   > [**@bartsmykla**]: Currently [at the end of the script which is provisioning resources for main project](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-main-project.sh#L179-L192) there is a comment and mechanism to acknowledging the knowledge about having to log in to the cloud console by human to enable billing export
   
   - `kubernetes_public_billing`:
     - `access`:
-      - `groupByEmail:k8s-infra-gcp-accounting@kubernetes.io"`:
+      - `groupByEmail:k8s-infra-gcp-accounting@kubernetes.io`:
         - `READER`
         - `roles/bigquery.metadataViewer`
         - `roles/bigquery.user`
