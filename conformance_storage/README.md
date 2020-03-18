@@ -6,7 +6,7 @@ Analyzed script: [ensure-conformance-storage.sh](https://github.com/kubernetes/k
 
 ## Table of Content <!-- omit in toc -->
 
-- [Terraform resources for Conformance Storage](#terraform-resources-for-conformance-storage)
+- [Terraform resources](#terraform-resources)
 - [Variables used in Components](#variables-used-in-components)
   - [`[BUCKETS]`](#buckets)
 - [Components](#components)
@@ -14,7 +14,7 @@ Analyzed script: [ensure-conformance-storage.sh](https://github.com/kubernetes/k
 
 ---
 
-## Terraform resources for Conformance Storage
+## Terraform resources
 
 - Provider: [`Google`](https://www.terraform.io/docs/providers/google/index.html "Provider: Google")
   - [`google_project`](https://www.terraform.io/docs/providers/google/r/google_project.html "Resource: Google Project")
