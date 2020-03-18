@@ -88,10 +88,10 @@ Analyzed script: [ensure-prod-storage.sh](https://github.com/kubernetes/k8s.io/b
     - GCR:
       - `[REGION]_[PROJECT]`
     - GCS Bucket:
-      - `gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com`:
+      - `gs://[REGION].artifacts.[PROJECT].appspot.com`:
         - bucketpolicyonly: `true`
     - IAM:
-      - `gs://[REGION].artifacts.k8s-staging-[PROJECT].appspot.com`:
+      - `gs://[REGION].artifacts.[PROJECT].appspot.com`:
         - `allUsers:objectViewer`
         - `group:k8s-infra-artifact-admins@kubernetes.io:objectAdmin`
         - `group:k8s-infra-artifact-admins@kubernetes.io:legacyBucketOwner`
@@ -569,3 +569,14 @@ google_storage_bucket_iam_binding:
 - <sup>10</sup> [Special case: `ensure-prod-storage.sh#L214-L215`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage.sh#L214-L215)
 - <sup>11</sup> [Special case: `ensure-prod-storage.sh#L219`](https://github.com/kubernetes/k8s.io/blob/master/infra/gcp/ensure-prod-storage.sh#L219)
 - <sup>12</sup>[**todo(@bartsmykla)**]: When doing analysis of CIP Auditor scripts I found that [IAMs for `k8s-gcr-audit-test-prod`](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/audit/projects/k8s-gcr-audit-test-prod/iam.json) doesn't match exactly with those assigned by our scripts. I need to compare them more precisely
+
+## Questions & Doubts
+
+- When I'm looking at bucket: [`gs://k8s-artifacts-prod`](https://console.cloud.google.com/storage/browser/k8s-artifacts-prod?forceOnBucketsSortingFiltering=false&authuser=0&folder=true&organizationId=true&project=k8s-artifacts-prod) the only things I see here are file: [index.html](https://github.com/kubernetes/k8s.io/blob/e62c18e79a75615d4868afaf5eebcf36bb265df9/infra/gcp/static/prod-storage/index.html) and directory: [`binaries/kops`](https://console.cloud.google.com/storage/browser/k8s-artifacts-prod/binaries/kops/?forceOnBucketsSortingFiltering=false&authuser=0&folder=true&organizationId=true&project=k8s-artifacts-prod)
+  - Why there is only `kops` using it?
+  - What is the purpose of this bucket?
+  - As far as it follows from the code it looks like the only people who have access to push to that bucket are members of the group: `k8s-infra-artifact-admins@kubernetes.io`, what is the process to push to this bucket?
+- Looking at bucket: [`gs://k8s-artifacts-prod-bak`](https://console.cloud.google.com/storage/browser/k8s-artifacts-prod-bak/binaries/kops/?forceOnBucketsSortingFiltering=false&authuser=0&folder=true&organizationId=true&project=k8s-artifacts-prod-bak) it seems it's empty
+  - What is the purpose of the bucket?
+  - Why it's empty?
+  - What is the process of pushing to that bucket?
