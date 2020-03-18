@@ -35,7 +35,7 @@ Analyzed script: [ensure-releng.sh](https://github.com/kubernetes/k8s.io/blob/e6
   - API:
     - `cloudkms`
 
-## Yaml representation of Components[<sup>G1</sup>](../README.md#global-reference),</sup>[<sup>G2</sup>](../README.md#global-reference)
+## Yaml representation of Components[<sup>G1</sup>](../README.md#global-reference)<sup>,</sup>[<sup>G2</sup>](../README.md#global-reference)
 
 ```yaml
 google_project:
